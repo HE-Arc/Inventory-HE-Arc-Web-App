@@ -2,7 +2,7 @@
 
 App Mobile Inventaire HE-Arc
 
-|                                 |
+|              |                  |
 |:-------------|:-----------------|
 | Étudiant :   | Armand Delessert |
 | Professeur : | David Grunenwald |
@@ -10,7 +10,7 @@ App Mobile Inventaire HE-Arc
 
 ## Compétences visées
 
-|                                                         |
+|                                                 |       |
 |:------------------------------------------------|------:|
 | Gérer le projet :                               |  10 % |
 | Analyser et spécifier des produits / services : |  30 % |
