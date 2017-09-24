@@ -1,7 +1,7 @@
 # Journal de travail
 
 ## Mercredi 20 septembre 2017
-### Première séance hebdomadaire.
+### Séance hebdomadaire
 * Définition des objectifs/fonctionnalités :
   * Effectuer un emprunt de matériel
   * Enregistrer un retour de matériel
@@ -52,7 +52,7 @@
 * Rédiger le cahier des charges.
 * Rechercher les frameworks qui seront utilisés.
 
-### Séance hebdomadaire.
+### Séance hebdomadaire
 * Validation du cahier des charges.
 
 _ heure(s)
@@ -62,4 +62,4 @@ _ heure(s)
 * Faire le planning.
 * Faire un tutoriel pour prendre en mains les outils.
 
-### Séance hebdomadaire.
+### Séance hebdomadaire
