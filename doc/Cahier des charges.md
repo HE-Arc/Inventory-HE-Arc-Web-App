@@ -2,7 +2,7 @@
 
 App Mobile Inventaire HE-Arc
 
-|              |                  |
+|                                 |
 |:-------------|:-----------------|
 | Étudiant :   | Armand Delessert |
 | Professeur : | David Grunenwald |
@@ -10,7 +10,7 @@ App Mobile Inventaire HE-Arc
 
 ## Compétences visées
 
-|                                                 |       |
+|                                                         |
 |:------------------------------------------------|------:|
 | Gérer le projet :                               |  10 % |
 | Analyser et spécifier des produits / services : |  30 % |
@@ -39,14 +39,12 @@ Le développement se focalisera sur une progressive web application (PWA).
 
 
 ### Développement
-#### Fonctionnalités primaire (_must to have_) :
-* Login de l'utilisateur simple
+#### Fonctionnalités primaire (_must have_) :
 * Effectuer un emprunt de matériel
 * Enregistrer un retour de matériel
 * Lecture d'un code à barres et de QR codes
+* Rechercher un appareil
+* Afficher les détails d'un appareil
 
 #### Fonctionnalités secondaires (_nice to have_) :
-* Afficher les détails d'un appareil
-* Rechercher un appareil
-* Design _responsive_ (adaptable à toutes les tailles d'écrans)
-* Login de l'utilisateur sécurisé (chiffrement du mot de passe)
+* Login de l'utilisateur
