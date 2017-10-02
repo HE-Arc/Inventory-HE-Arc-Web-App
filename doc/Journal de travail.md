@@ -1,6 +1,6 @@
 # Journal de travail
 
-## Lundi 2 septembre 2017
+## Lundi 2 octobre 2017
 ### Objectifs
 * Détailler la liste des tâches (à partir des fonctionnalités du cahier des charges).
 * Faire le planning (diviser les tâches trop complexes) :
@@ -12,6 +12,16 @@
 
 ### Séance hebdomadaire
 * ...
+
+### Travail sur le projet
+* [Planning du projet](https://github.com/HE-Arc/Inventory-HE-Arc-Web-App/blob/master/doc/Planning.png).
+
+2 heures
+
+## Dimanche 1^^er^^ octobre
+* Commencé le planning du projet.
+
+1 heure
 
 ## Lundi 25 septembre 2017
 ### Objectifs
@@ -26,7 +36,7 @@
 * Continué le [tutoriel sur le développement de PWA](https://developers.google.com/web/fundamentals/getting-started/codelabs/your-first-pwapp/) :
   * Téléchargement et mise en place du projet d'exemple.
   * Lecture du code de base.
-  * Avancé le tutoriel jusqu'à _Start with a fast first load_.
+  * Avancé le tutoriel PWA jusqu'à _Start with a fast first load_.
 
 3 heures
 
