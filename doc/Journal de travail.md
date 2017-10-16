@@ -1,7 +1,55 @@
 # Journal de travail
 
+
+## Dimanche 15 octobre 2017
+* Mise à jour du journal de travail.
+
+1 heure
+
+
+## Samedi 14 octobre 2017
+* Étude du code du [portail web de l'inventaire](https://inventory-dev.ing.he-arc.ch/product/show/215) (pour faire un emprunt).
+  * Le portail web existant n'est pas totalement en [REST](https://www.wikiwand.com/fr/Representational_state_transfer#/Contraintes).
+    * Un coockie de session doit être stocké du côté du serveur lors du login (enfreint la contrainte d'un serveur stateless).
+
+3 heures
+
+
+## Vendredi 13 octobre 2017
+* Commencé un [Tutoriel sur le JavaScript](https://openclassrooms.com/courses/tout-sur-le-javascript).
+  * Jusqu'à la [partie 3 _Les variables_](https://openclassrooms.com/courses/tout-sur-le-javascript/les-variables-5).
+* Test de l'"API" du [portail web de l'inventaire](https://inventory-dev.ing.he-arc.ch/) :
+  * Analyse du code du site web.
+  * Essai d'implémentation d'un emprunt de matériel.
+    * Pas encore réussi.
+
+4 heures
+
+
+## Jeudi 12 octobre 2017
+* Fin du [tutoriel PWA](https://developers.google.com/web/fundamentals/codelabs/your-first-pwapp/).
+  * _Support native integration_ :
+    * Ajout du fichier `manifest.json`, de l'icône et des codes spécifiques aux plates-formes (iOS et Windows) pour permettre une intégration native de l'application.
+  * _Deploy to a secure host and celebrate_ :
+    * Déploiement de l'application PWA sur [Firebase](https://firebase.google.com/), un hébergeur de site web statique.
+
+1.5 heure
+
+
+## Mercredi 11 octobre 2017
+* [Tutoriel PWA](https://developers.google.com/web/fundamentals/codelabs/your-first-pwapp/).
+
+1.5 heure
+
+
 ## Lundi 9 octobre 2017
 ### Séance hebdomadaire
+* Objectifs pour la prochaine fois :
+  * Finir le tutoriel.
+  * Maquette de l'interface graphique.
+  * Tester API ().
+  * Boilerplate : "Web Starter Kit" de Google
+    * Attention à justifier le choix !
 
 ### Travail sur le projet
 * Mockup de l'interface ?
