@@ -47,9 +47,10 @@
 * Objectifs pour la prochaine fois :
   * Finir le tutoriel.
   * Maquette de l'interface graphique.
-  * Tester API ().
-  * Boilerplate : "Web Starter Kit" de Google
-    * Attention à justifier le choix !
+  * Tester l'API du portail web.
+  * Choix du boilerplate :
+    * ["Web Starter Kit" de Google](https://github.com/google/web-starter-kit) ?
+    * Attention à justifier le choix ! Comparer avec [d'autres boilerplates](https://hnpwa.com/).
 
 ### Travail sur le projet
 * Mockup de l'interface ?
