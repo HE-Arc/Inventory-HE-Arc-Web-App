@@ -1,6 +1,44 @@
 # Journal de travail
 
 
+## Vendredi 27 octobre 2017
+* Test de l'API REST avec l'outil en ligne [API Tester](https://apitester.com/).
+  * Impossible pour l'outil de se connecter à `inventory-dev.ing.he-arc.ch`.
+* Suivi quelques tutoriels :
+  * Tutoriel vidéo "[What Is REST?](http://www.restapitutorial.com/lessons/whatisrest.html)".
+  * [RESTful Web Services Tutorial](https://www.tutorialspoint.com/restful/index.htm) :
+    * Jusqu'à [Addressing](https://www.tutorialspoint.com/restful/restful_addressing.htm).
+  * [Consuming a RESTful Web Service with jQuery](https://spring.io/guides/gs/consuming-rest-jquery/).
+* Commencé une spécification d'une nouvelle API REST.
+
+4 heures
+
+
+## Jeudi 26 octobre 2017
+* Test de l'API.
+  * Requêtes à l'API REST :
+    * Authentification :
+      > `https://inventory-dev.ing.he-arc.ch/api/login/devweb.user/a7c1b7be279b2e785430d67c522446449da3fcea`
+    * Requête pour l'interrogation de la base de données :
+      > `https://inventory-dev.ing.he-arc.ch/api/rest/<token>/<class>/<method>?<params>`
+  * **Le hash MD5 du mot de passe ne fonctionne pas, impossible de se connecter à l'API REST.**
+
+2 heures
+
+
+## Lundi 16 octobre 2017
+### Séance hebdomadaire
+* Objectifs pour la prochaine fois :
+  * Tester la vrai API REST (voir la doc dans le docx).
+  * Déterminer si elle suffit ou s'il faut en spécifier une nouvelle.
+  * Choisir un boilerplate, les framework (?), trouver un tuto en relation avec ces outils (pour un démarrage du projet plus rapide).
+  * Mettre à jour ce journal de travail.
+  * **Contacter le prof en cas de souci !**
+  * **Voir notes OneNote.**
+
+1 heure
+
+
 ## Dimanche 15 octobre 2017
 * Mise à jour du journal de travail.
 
