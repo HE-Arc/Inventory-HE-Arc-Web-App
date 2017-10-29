@@ -1,9 +1,16 @@
 # Journal de travail
 
 
+## Dimanche 29 octobre 2017
+* Fin du tutoriel [RESTful Web Services Tutorial](https://www.tutorialspoint.com/restful/index.htm).
+* [Spécification d'une nouvelle API REST](https://github.com/HE-Arc/Inventory-HE-Arc-Web-App/blob/master/doc/Sp%C3%A9cification%20API%20REST.md).
+
+4 heures
+
+
 ## Vendredi 27 octobre 2017
 * Test de l'API REST avec l'outil en ligne [API Tester](https://apitester.com/).
-  * Impossible pour l'outil de se connecter à `inventory-dev.ing.he-arc.ch`.
+  * Impossible pour l'outil de se connecter à `inventory-dev.ing.he-arc.ch`. Nécessiterait de passer par le VPN de l'école.
 * Suivi quelques tutoriels :
   * Tutoriel vidéo "[What Is REST?](http://www.restapitutorial.com/lessons/whatisrest.html)".
   * [RESTful Web Services Tutorial](https://www.tutorialspoint.com/restful/index.htm) :
