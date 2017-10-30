@@ -1,6 +1,33 @@
 # Journal de travail
 
 
+## Lundi 16 octobre 2017
+### Séance hebdomadaire
+* La spécification de l'API proposée est bonne.
+  * Manque la recherche d'un produit par son nom.
+* Essayer de tester l'API développée sur la version 2.0 de Swagger.
+* Maquette wireframe de l'interface (représentation des éléments de l'interface sans implication sur la mise en forme de l'interface).
+* Fixer l'/les objectif(s) pour la semaine prochaine par email mardi 31.
+
+### Travail sur le projet
+* Test de l'API REST existante :
+  * Réussite de connexion à l'API REST existante !
+    * Via l'URL suivante (sur le domaine de dev, mot de passe transmis en clair) :
+    > `https://inventory-dev.ing.he-arc.ch/api/login/devweb.user/123456`
+    * Réponse reçue :
+    > `{"success":true,"message":"OK","result":"gnDxk2014iQR41udQ252W17fsyPJHnvgRWAc306lyF10gevWZq"}`
+  * Test avec succès de recherche d'un produit à partir de son ID :
+  > `https://inventory-dev.ing.he-arc.ch/api/rest/gnDx…vWZq/Product/searchById?productId=215`
+  * Test avec succès de la recherche par mots-clés sur la requête `Nokia Lumia 920` :
+  > `https://inventory-dev.ing.he-arc.ch/api/rest/gnDx…vWZq/Product/search?term=Nokia+Lumia+920`
+  * Essai d'emprunt de matériel, sans succès :
+  > `https://inventory-dev.ing.he-arc.ch/api/rest/gnDx…vWZq/Product/loan?productId=215&beginDate=01.01.2018&endDate=02.01.2018&comment="Test%20de%20l%27API%20REST"`
+  * Réponse reçue :
+  > `{"success":true,"message":"success","result":{"loan":false,"message":"You can not loan a product for this user"}}`
+
+4 heures
+
+
 ## Dimanche 29 octobre 2017
 * Fin du tutoriel [RESTful Web Services Tutorial](https://www.tutorialspoint.com/restful/index.htm).
 * [Spécification d'une nouvelle API REST](https://github.com/HE-Arc/Inventory-HE-Arc-Web-App/blob/master/doc/Sp%C3%A9cification%20API%20REST.md).
@@ -35,9 +62,9 @@
 * Test de l'API.
   * Requêtes à l'API REST :
     * Authentification :
-      > `https://inventory-dev.ing.he-arc.ch/api/login/devweb.user/a7c1b7be279b2e785430d67c522446449da3fcea`
+    > `https://inventory-dev.ing.he-arc.ch/api/login/devweb.user/a7c1b7be279b2e785430d67c522446449da3fcea`
     * Requête pour l'interrogation de la base de données :
-      > `https://inventory-dev.ing.he-arc.ch/api/rest/<token>/<class>/<method>?<params>`
+    > `https://inventory-dev.ing.he-arc.ch/api/rest/<token>/<class>/<method>?<params>`
   * **Le hash MD5 du mot de passe ne fonctionne pas, impossible de se connecter à l'API REST.**
 
 2 heures
