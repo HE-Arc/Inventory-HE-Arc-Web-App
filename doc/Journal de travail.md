@@ -13,17 +13,17 @@
 * Test de l'API REST existante :
   * Réussite de connexion à l'API REST existante !
     * Via l'URL suivante (sur le domaine de dev, mot de passe transmis en clair) :
-    > `https://inventory-dev.ing.he-arc.ch/api/login/devweb.user/123456`
+      > `https://inventory-dev.ing.he-arc.ch/api/login/devweb.user/123456`
     * Réponse reçue :
-    > `{"success":true,"message":"OK","result":"gnDxk2014iQR41udQ252W17fsyPJHnvgRWAc306lyF10gevWZq"}`
+      > `{"success":true,"message":"OK","result":"gnDxk2014iQR41udQ252W17fsyPJHnvgRWAc306lyF10gevWZq"}`
   * Test avec succès de recherche d'un produit à partir de son ID :
-  > `https://inventory-dev.ing.he-arc.ch/api/rest/gnDx…vWZq/Product/searchById?productId=215`
+    > `https://inventory-dev.ing.he-arc.ch/api/rest/gnDx…vWZq/Product/searchById?productId=215`
   * Test avec succès de la recherche par mots-clés sur la requête `Nokia Lumia 920` :
-  > `https://inventory-dev.ing.he-arc.ch/api/rest/gnDx…vWZq/Product/search?term=Nokia+Lumia+920`
+    > `https://inventory-dev.ing.he-arc.ch/api/rest/gnDx…vWZq/Product/search?term=Nokia+Lumia+920`
   * Essai d'emprunt de matériel, sans succès :
-  > `https://inventory-dev.ing.he-arc.ch/api/rest/gnDx…vWZq/Product/loan?productId=215&beginDate=01.01.2018&endDate=02.01.2018&comment="Test%20de%20l%27API%20REST"`
+    > `https://inventory-dev.ing.he-arc.ch/api/rest/gnDx…vWZq/Product/loan?productId=215&beginDate=01.01.2018&endDate=02.01.2018&comment="Test%20de%20l%27API%20REST"`
   * Réponse reçue :
-  > `{"success":true,"message":"success","result":{"loan":false,"message":"You can not loan a product for this user"}}`
+    > `{"success":true,"message":"success","result":{"loan":false,"message":"You can not loan a product for this user"}}`
 
 4 heures
 
@@ -62,9 +62,9 @@
 * Test de l'API.
   * Requêtes à l'API REST :
     * Authentification :
-    > `https://inventory-dev.ing.he-arc.ch/api/login/devweb.user/a7c1b7be279b2e785430d67c522446449da3fcea`
+      > `https://inventory-dev.ing.he-arc.ch/api/login/devweb.user/a7c1b7be279b2e785430d67c522446449da3fcea`
     * Requête pour l'interrogation de la base de données :
-    > `https://inventory-dev.ing.he-arc.ch/api/rest/<token>/<class>/<method>?<params>`
+      > `https://inventory-dev.ing.he-arc.ch/api/rest/<token>/<class>/<method>?<params>`
   * **Le hash MD5 du mot de passe ne fonctionne pas, impossible de se connecter à l'API REST.**
 
 2 heures
