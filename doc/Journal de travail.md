@@ -4,8 +4,18 @@
 ## Dimanche 29 octobre 2017
 * Fin du tutoriel [RESTful Web Services Tutorial](https://www.tutorialspoint.com/restful/index.htm).
 * [Spécification d'une nouvelle API REST](https://github.com/HE-Arc/Inventory-HE-Arc-Web-App/blob/master/doc/Sp%C3%A9cification%20API%20REST.md).
+* Recherche d'outil pour le développement d'API REST :
+  * Outils de développement :
+    * [Postman](https://www.getpostman.com/)
+    * [deployd](http://deployd.com/)
+    * [Insomnia](https://insomnia.rest/)
+    * [apiary](https://apiary.io/)
+    * [Swagger](https://swagger.io/)
+  * Outil de test :
+    * [Mocky](https://www.mocky.io/) : Générateur de réponses HTTP pour le test de client REST.
+* Essai de modélisation de l'API [sur Swagger](https://app.swaggerhub.com/apis/ArmandD/Inventory-HE-Arc-Web-App/1.0.0). Pas trouvé comment tester l'API modélisée, [les explications n'étant pas claires (ou périmées)](https://app.swaggerhub.com/help/integrations/api-auto-mocking).
 
-4 heures
+6 heures
 
 
 ## Vendredi 27 octobre 2017
