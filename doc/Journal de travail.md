@@ -1,7 +1,40 @@
 # Journal de travail
 
 
-## Lundi 16 octobre 2017
+## Mardi 7 novembre 2017
+* Continué l'implémentation de l'authentification dans le boilerplate.
+* Début d'implémentation des autres requêtes (affichage des détails, emprunt, retour)
+  * Utilisation de l'API [mockable.io](https://www.mockable.io/).
+
+4 heures
+
+
+## Dimanche 5 novembre 2017
+* Choix du _boilerplate_ [HTML5 Boilerplate](https://html5boilerplate.com/).
+  * Utilisation d'[Initializr](https://etudiants-caweb.u-strasbg.fr/1415/schnoerringer/projetm2/index.php?page=boilerplate&css=css3) pour la personnalisation du template.
+  * Début d'implémentation du login dans le boilerplate choisi.
+* API REST :
+  * Ajout de requêtes REST pour le login à l'API sur [mockable.io](https://www.mockable.io/).
+  * Test de l'API avec [	API Tester](https://apitester.com/).
+
+4 heures
+
+
+## Mercredi 1er novembre 2017
+* Mock de l'API REST sur [mockable.io](https://www.mockable.io/) :
+  * [Test de récupération des détails d'un produit.](http://demo6654639.mockable.io/api/rest/%3Ctoken%3E/products/0/details)
+
+1 heure
+
+
+## Mardi 31 octobre 2017
+* Le boilerplate [Web Starter Kit](https://developers.google.com/web/tools/starter-kit/) de Google [n'est plus maintenu](https://github.com/google/web-starter-kit/issues/958).
+  * [Workbox](https://workboxjs.org/) comme remplaçant ?
+
+1 heure
+
+
+## Lundi 30 octobre 2017
 ### Séance hebdomadaire
 * La spécification de l'API proposée est bonne.
   * Manque la recherche d'un produit par son nom.
