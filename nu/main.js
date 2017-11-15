@@ -9,6 +9,10 @@ Authentification de l'utilisateur.
 Fonction du onclick du bouton de login.
 */
 function login_onclick() {
+	// Username: "devweb.user", "devweb.manager", "devweb.admin"
+	// Password: "123456"
+	// MD5 Password Hash: "e10adc3949ba59abbe56e057f20f883e"
+
 	var username = document.getElementById('login_username').value;
 	var password = document.getElementById('login_password').value;
 	login(username, password);
@@ -22,8 +26,7 @@ function login(username, password) {
 	// Construction de l'URL de login
 	var loginUrlBase = "https://inventory-dev.ing.he-arc.ch/api/login/";
 	var loginUrl = loginUrlBase + username + "/" + password;
-
-	alert("loginUrl: " + loginUrl);
+	console.log("Login with this username: " + username);
 
 	// Envoi de la requête de login
 	sendRequest(loginUrl, setToken);
@@ -31,11 +34,12 @@ function login(username, password) {
 
 
 /*
-Set the token.
+Récupère le token de la réponse reçue.
 Callback de la fonction login().
 */
 function setToken(response) {
 	theToken = response.result;
+	console.log("Received token: " + theToken);
 }
 
 
@@ -61,7 +65,7 @@ function getProductDetails(productId) {
 	var urlParam = "?productId=";
 
 	var url = urlBase + theToken + "/" + urlClass + urlMethod + urlParam + productId;
-	alert("url: " + url);
+	console.log("URL to retrieve details of product with ID " + productId + ":\n" + url);
 
 	// Envoi de la requête
 	sendRequest(url, showProductName);
@@ -73,7 +77,7 @@ Affichage du nom du produit.
 Fonction de callback.
 */
 function showProductName(response) {
-	console.log("product name: " + response.result.name);
+	console.log("Product name: " + response.result.name);
 }
 
 
@@ -85,6 +89,9 @@ function loanProduct_onclick() {
 	var productId = document.getElementById('loanProduct_productId').value;
 	var beginDate = document.getElementById('beginDate_productId').value;
 	var endDate = document.getElementById('endDate_productId').value;
+
+	beginDate = "2018-01-01";
+	endDate = "2019-02-01";
 	loanProduct(productId, beginDate, endDate);
 }
 
@@ -99,17 +106,20 @@ function loanProduct(productId, beginDate, endDate) {
 	var urlMethod = "loan";
 
 	var urlParam1 = "?productId=";
-	var urlParam2 = "?beginDate=";
-	var urlParam3 = "?endDate=";
+	var urlParam2 = "&beginDate=";
+	var urlParam3 = "&endDate=";
 
 	var url = urlBase + theToken + "/" + urlClass + urlMethod
 			+ urlParam1 + productId
 			+ urlParam2 + beginDate
 			+ urlParam3 + endDate;
-	alert("url: " + url);
+	console.log("URL to loan the product with ID " + productId
+			+ " from the " + beginDate
+			+ " to the " + endDate
+			+ ":\n" + url);
 
 	// Envoi de la requête
-	sendRequest(url, null);
+	sendRequest(url, showResponse);
 }
 
 
@@ -126,7 +136,7 @@ function returnProduct_onclick(productId) {
 /*
 Retour d'un produit.
 */
-function returnProduct() {
+function returnProduct(productId) {
 	// Construction de l'URL
 	var urlBase = "https://inventory-dev.ing.he-arc.ch/api/rest/";
 	var urlClass = "Product/";
@@ -135,10 +145,10 @@ function returnProduct() {
 	var urlParam = "?productId=";
 
 	var url = urlBase + theToken + "/" + urlClass + urlMethod + urlParam + productId;
-	alert("url: " + url);
+	console.log("URL to return the product with ID " + productId + ":\n" + url);
 
 	// Envoi de la requête
-	sendRequest(url, null);
+	sendRequest(url, showResponse);
 }
 
 
@@ -164,10 +174,10 @@ function searchProductById(productId) {
 	var urlParam = "?productId=";
 
 	var url = urlBase + theToken + "/" + urlClass + urlMethod + urlParam + productId;
-	alert("url: " + url);
+	console.log("URL to search the product with ID " + productId + ":\n" + url);
 
 	// Envoi de la requête
-	sendRequest(url, null);
+	sendRequest(url, showResponse);
 }
 
 
@@ -193,10 +203,19 @@ function searchProductByName(term) {
 	var urlParam = "?term=";
 
 	var url = urlBase + theToken + "/" + urlClass + urlMethod + urlParam + term;
-	alert("url: " + url);
+	console.log("URL to search the product with the name \"" + term + "\":\n" + url);
 
 	// Envoi de la requête
-	sendRequest(url, null);
+	sendRequest(url, showResponse);
+}
+
+
+/*
+Affichage de la réponse.
+Fonction de callback.
+*/
+function showResponse(response) {
+	console.log("Last response:\n" + JSON.stringify(response));
 }
 
 
