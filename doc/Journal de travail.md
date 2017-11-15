@@ -1,6 +1,50 @@
 # Journal de travail
 
 
+## Mardi 14 novembre 2017
+* Continué la communication avec l'API de l'inventaire.
+  * Pour le passage de paramètres à la fonction de callback, changer `xhr.onreadystatechange = callback(xhr);` en `xhr.onreadystatechange = function() { callback(xhr); }`.
+* Il est possible d'envoyer les requêtes de login, d'affichage, d'emprunt, et de retour de matériel.
+    * Reste un bug redirigeant sur le message d'erreur "Unhandled request. Did you select a folder to serve?" après l'envoi de la requête de login.
+
+5 heures
+
+
+## Lundi 13 novembre 2017
+* Débug de l'envoi des requêtes XHR...
+  * D'après M. Grunenvald, le problème peut provenir du fait que le fichier HTML est accédé depuis le gestionnaire de fichiers (protocole `file://`). Effectivement, le problème disparaît lors de l'accès au fichier HTML via un serveur local (protocole `http://`).
+    * Mise à jour du post ["XHR status undefined" sur StackOverflow](https://stackoverflow.com/questions/47191673/xhr-status-undefined).
+
+2 heures
+
+
+## Dimanche 12 novembre 2017
+* Débug de l'envoi des requêtes XHR...
+  * Le problème vient du [Contrôle d'accès HTTP](https://developer.mozilla.org/fr/docs/HTTP/Access_control_CORS).
+  * Cependant, l'ajout de `Access-Control-Allow-Origin : *`, sensé autoriser n'importe quelle source, n'est pas pris en compte.
+
+5 heures
+
+
+## Vendredi 10 novembre 2017
+* Débug de l'envoi des requêtes XHR...
+  * Toujours le problème du statut `xhr.readyState` qui passe bien à `4` mais le code HTTP reste indéfini...
+  * Voir le post ["XHR status undefined" du 10 novembre sur StackOverflow](https://stackoverflow.com/revisions/47191673/3).
+
+2 heures
+
+
+## Mercredi 8 novembre 2017
+### Séance hebdomadaire
+...
+
+### Travail sur le projet
+* Débug de l'envoi des requêtes XHR :
+  * Le statut `xhr.readyState` passe bien à `4` mais le code HTTP reste indéfini...
+
+5 heures
+
+
 ## Mardi 7 novembre 2017
 * Continué l'implémentation de l'authentification dans le boilerplate.
 * Début d'implémentation des autres requêtes (affichage des détails, emprunt, retour)
