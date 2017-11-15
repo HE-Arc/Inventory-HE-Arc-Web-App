@@ -36,7 +36,24 @@
 
 ## Mercredi 8 novembre 2017
 ### Séance hebdomadaire
-...
+* Pour les requêtes REST, 3 possibilités :
+  * Utiliser les requêtes XHR comme déjà commencé
+  * Utiliser XHR avec jQuerry
+  * Utiliser [l'API Fetch](https://developer.mozilla.org/fr/docs/Web/API/Fetch_API) (nouveau standard)
+* Suivre [le tuto sur AJAX sur W3Schools](https://www.w3schools.com/xml/ajax_intro.asp).
+  * Voir également la page sur le [XML HttpRequest (XHR)](https://www.w3schools.com/xml/xml_http.asp).
+
+#### Objectifs pour la semaine prochaine :
+* Finir les requêtes AJAX / XHR sur l'API
+  * Utiliser l'API Fetch qui est le futur standard ?
+* Commencer la suite !
+
+#### La suite du projet :
+* Implémenter la recherche d'un appareil.
+* Implémenter le scan du code à barres (important pour le PA !).
+  * À commencer à tester en parallèle.
+  * Voir le support de Web RTC sur iOS 11.
+* Intégration de la web app dans la PWA.
 
 ### Travail sur le projet
 * Débug de l'envoi des requêtes XHR :
