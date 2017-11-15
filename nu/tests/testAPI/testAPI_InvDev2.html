@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Test API</title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+
+<script>
+  var theToken;
+
+  // Login de l'utilisateur
+  var loginUrl = "https://inventory-dev.ing.he-arc.ch/api/login/devweb.user/123456";
+  sendRequest(loginUrl, setToken);
+
+  /*Login callback.*/
+  function setToken(response) {
+    theToken = response.result;
+    console.log("token: " + theToken);
+
+    getProductDetails(215);
+  }
+
+  /*Get product details.*/
+  function getProductDetails(productId) {
+    // Récupération des détails du produit avec l'ID 215
+    var getProductUrl = "https://inventory-dev.ing.he-arc.ch/api/rest/"
+        + theToken + "/" + "Product/" + "info" + "?productId=" + productId;
+    sendRequest(getProductUrl, showProductName);
+  }
+
+  /*getProductDetails() callback.*/
+  function showProductName(response) {
+		console.log("product name: " + response.result.name);
+  }
+
+  /*
+  Envoi d'une requête.
+  */
+  function sendRequest(url, callback) {
+    console.log("Request 1 sended to this URL: " + url);
+
+    var xhr = new XMLHttpRequest();
+  	xhr.open("GET", url, true);
+  	xhr.setRequestHeader("Content-type", "application/json");
+    xhr.onreadystatechange = function() {
+      sendRequest_callback(xhr, callback);
+    }
+
+  	xhr.send();
+  	console.log("sendRequest() : xhr.readyState: " + xhr.readyState);
+  	console.log("sendRequest() : xhr.status: " + xhr.status);
+  }
+
+  /*
+  Traitement de la réponse.
+  */
+  function sendRequest_callback(xhr, callback) {
+    console.log("callback() : xhr.readyState: " + xhr.readyState);
+
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      console.log("callback() : xhr.status: " + xhr.status);
+
+      if (xhr.status === 200) {
+        console.log("callback() : xhr.responseText: " + xhr.responseText);
+
+        // Récupération de la réponse
+        var response = JSON.parse(xhr.responseText);
+
+        // Traitement de la réponse
+        callback(response);
+      }
+    }
+  }
+
+</script>
+
+</body>
+
+</html>

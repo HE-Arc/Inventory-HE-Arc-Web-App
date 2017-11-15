@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Test API</title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+
+<script>
+  //var url = "https://inventory-dev.ing.he-arc.ch/api/login/devweb.user/123456";
+  var token = "kvVLSqA22Hyp13bIo06dI17M4H4qUbvSAwyK14OvUm11XQrR21";
+  var url = "https://inventory-dev.ing.he-arc.ch/api/rest/"
+      + token + "/" + "Product/" + "info" + "?productId=" + 215;
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", url, true);
+	xhr.setRequestHeader("Content-type", "application/json");
+	xhr.onreadystatechange = function() {
+		console.log("callback() : xhr.readyState: " + xhr.readyState);
+
+		if (xhr.readyState === XMLHttpRequest.DONE) {
+			console.log("callback() : xhr.status: " + xhr.status);
+
+			if (xhr.status === 200) {
+				console.log("callback() : xhr.responseText: " + xhr.responseText);
+
+				var response = JSON.parse(xhr.responseText);
+				console.log("callback() : product name: " + response.result.name);
+			}
+		}
+	}
+	xhr.send();
+	console.log("sendRequest() : xhr.readyState: " + xhr.readyState);
+	console.log("sendRequest() : xhr.status: " + xhr.status);
+</script>
+
+</body>
+
+</html>

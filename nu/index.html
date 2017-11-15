@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Inventory-HE-Arc-Web-App</title>
+	<meta charset="utf-8">
+	<script src="main.js"></script>
+</head>
+
+<body>
+
+
+<h1>Inventory-HE-Arc-Web-App</h1>
+
+
+<h2 class="form-signin-heading">Please sign in</h2>
+
+<p>To login, use the login details below:</p>
+<p>
+	Username: devweb.user
+	</br>
+	Password: 123456
+	</br>
+	Password MD5 hash: e10adc3949ba59abbe56e057f20f883e
+</p>
+
+<form class="form-signin" method="POST">
+	<!--
+		username: "devweb.user",
+		password: "123456",
+		MD5 Password Hash: "e10adc3949ba59abbe56e057f20f883e
+	-->
+	<input class="form-control" type="text" required name="username" id="login_username" placeholder="Username" value="devweb.user">
+	<input class="form-control" type="password" required name="password" id="login_password" placeholder="Password" value="123456">
+	<button class="btn" onclick="login_onclick()">Sign in</button>
+</form>
+
+
+<h2>Show a product</h2>
+
+<form class="form-signin" method="GET">
+	<input class="form-control" type="number" required name="productId" id="showProductDetails_productId" placeholder="Product ID">
+	<button class="btn" onclick="getProductDetails_onclick()">Show product</button>
+</form>
+
+
+<h2>Loan a product</h2>
+
+<form class="form-signin" method="PUT">
+	<input class="form-control" type="number" required name="productId" id="loanProduct_productId" placeholder="Product ID">
+	<input class="form-control" type="date" required name="beginDate" id="beginDate_productId">
+	<input class="form-control" type="date" required name="endDate" id="endDate_productId">
+	<button class="btn" onclick="loanProduct_onclick()">Loan</button>
+</form>
+
+
+<h2>Return a product</h2>
+
+<form class="form-signin" method="PUT">
+	<input class="form-control" type="number" required name="productId" id="returnProduct_productId" placeholder="Product ID">
+	<button class="btn" onclick="returnProduct_onclick()">Return</button>
+</form>
+
+
+<h2>Search a product by ID</h2>
+
+<form class="form-signin" method="PUT">
+	<input class="form-control" type="number" required name="productId" id="searchProductById_productId" placeholder="Product ID">
+	<button class="btn" onclick="searchProductById_onclick()">Return</button>
+</form>
+
+
+<h2>Search a product by name</h2>
+
+<form class="form-signin" method="PUT">
+	<input class="form-control" type="number" required name="productId" id="searchProductByName_term" placeholder="Product ID">
+	<button class="btn" onclick="searchProductByName_onclick()">Return</button>
+</form>
+
+</body>
+
+</html>
