@@ -1,13 +1,65 @@
 # Journal de travail
 
 
+## Mardi 21 novembre 2017
+* Mise en place du scan de codes-barres et de codes QR.
+  * Mise en place d'[une page de test](https://armanddelessert.github.io/).
+
+5 heures
+
+
+## Jeudi 16 novembre 2017
+* Recherche de bibliothèques de scan de codes-barres et de codes QR en JavaScript :
+  * Scan de codes-barres : [QuaggaJS](https://serratus.github.io/quaggaJS/),
+[serratus/quaggaJS sur GitHub](https://serratus.github.io/quaggaJS/).
+  * Scan de codes QR : [QR Code scanner](https://webqr.com/index.html),
+[LazarSoft/jsqrcode sur GitHub](https://github.com/LazarSoft/jsqrcode) (ne fonctionne que sur une image fixe, pas avec la caméra ?).
+  * Scan de codes QR : [Instascan](https://schmich.github.io/instascan/),
+[schmich/instascan](https://github.com/schmich/instascan).
+
+2 heures
+
+
+## Mercredi 15 novembre 2017
+### Séance hebdomadaire
+* Grosse phase de débug :
+  * Problème de redirection sur un page présentant l'erreur "*Unhandled request. Did you select a folder to serve?*" lors de l'appuis sur le bouton *Sign in* :
+    * L'erreur était provoquée par la présence des balises `<form>` et `</form>` dans le HTML.
+  * Problème de "*Blocage d’une requête multiorigines (Cross-Origin Request)*" lors de l'accès à l'API :
+    * Le serveur doit ajouter une information sur les domaines dont il s'attend à recevoir des requêtes dans l'en-tête des réponses HTTP qu'il envoi. Pour autoriser tous les domaines, il faut ajouter `Access-Control-Allow-Origin: *` dans l'en-tête des réponses HTTP envoyées par le serveur.
+    * L'extension pour Google Chrome [](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi/related?utm_source=chrome-app-launcher-info-dialog) permet de s'affranchir de ce problème en ajoutant automatiquement le champ `Access-Control-Allow-Origin: *` dans l'en-tête des paquets HTTP reçus.
+
+#### Pour la prochaine fois :
+* Finir les requêtes XHR
+  * Changer les URL et utiliser mock.io ou mockable.io.
+  * Récupération et affichage des réponses.
+* Commencer le scan du code-barres :
+  * Il y a et des codes à barres, et des codes QR.
+  * Les codes ne contiennent que l'ID du produit (juste un nombre).
+  * Demander à Christophe des exemples de codes (photos).
+    * Mettre le prof en copie des emails.
+
+#### La suite du projet :
+* Implémenter le scan du code-barres (important pour le PA !).
+  * À commencer à tester en parallèle.
+  * Voir le support de Web RTC sur iOS 11.
+* Intégration de la web app dans la PWA.
+
+### Travail sur le projet
+* Continué l'implémentation des requêtes XHR :
+  * La recherche d'un produit par son ID fonctionne.
+  * La recherche d'un produit par son nom (ne fonctionne pas pour "dell"...).
+
+3 heures
+
+
 ## Mardi 14 novembre 2017
 * Continué la communication avec l'API de l'inventaire.
   * Pour le passage de paramètres à la fonction de callback, changer `xhr.onreadystatechange = callback(xhr);` en `xhr.onreadystatechange = function() { callback(xhr); }`.
 * Il est possible d'envoyer les requêtes de login, d'affichage, d'emprunt, et de retour de matériel.
     * Reste un bug redirigeant sur le message d'erreur "Unhandled request. Did you select a folder to serve?" après l'envoi de la requête de login.
 
-5 heures
+6 heures
 
 
 ## Lundi 13 novembre 2017
@@ -50,7 +102,7 @@
 
 #### La suite du projet :
 * Implémenter la recherche d'un appareil.
-* Implémenter le scan du code à barres (important pour le PA !).
+* Implémenter le scan du code-barres (important pour le PA !).
   * À commencer à tester en parallèle.
   * Voir le support de Web RTC sur iOS 11.
 * Intégration de la web app dans la PWA.
@@ -309,7 +361,7 @@
   * Enregistrer un retour de matériel
   * Afficher les détails d'un appareil
   * Rechercher un appareil
-  * Lecture d'un code à barres et de QR codes (objectif prioritaire)
+  * Lecture d'un code-barres et de QR codes (objectif prioritaire)
 * Matériel/documentation fournie :
   * Documentation de l'API ?
   * Base de données de test (structure des tables, données d'exemple) ?
