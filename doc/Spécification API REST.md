@@ -1,69 +1,111 @@
 # Spécification de l'API REST
 
 
-## Représentation des données
-
-### Matériel
-#### Format XML
-    <product>
-      <id>1</id>
-      <name>ProductName</name>
-    </product>
-
-#### Format JSON
-    {
-      "id": 1,
-      "name": "ProductName"
-    }
-
-### Emprunt de matériel
-#### Format XML
-    <loan>
-      <product_id>1</product_id>
-      <begin_date>"01.01.2001"</begin_date>
-      <end_date>"01.01.2001"</end_date>
-    </loan>
-
-#### Format JSON
-    {
-      "product_id": 1,
-      "begin_date": "01.01.2001"
-      "end_date": "01.01.2001"
-    }
-
-### Retour de matériel
-#### Format XML
-    <return>
-      <product_id>1</product_id>
-      <return_date>"01.01.2001"</return_date>
-    </return>
-
-#### Format JSON
-    {
-      "product_id": 1,
-      "return_date": "01.01.2001"
-    }
-
-
-## URI
-
-### Accès à un produit
-#### Méthode HTTP
+## Authentification
+### Méthode HTTP
 `GET`
 
-#### URL
+### URL
+    https://inventory-dev.ing.he-arc.ch/api/login/<username>/<md5_password>
+
+#### Paramètres
+* `<username>` : Nom d'utilisateur
+* `<md5_password>` : Hash MD5 du mot de passe
+
+### Réponse JSON
+    {
+      "success": true,
+      "username": "<username>",
+      "token": "<token>"
+    }
+
+## Affichage d'un produit
+### Méthode HTTP
+`GET`
+
+### URL
     https://inventory-dev.ing.he-arc.ch/api/rest/<token>/products/<id>/details
 
-### Emprunt d'un matériel
-#### Méthode HTTP
+#### Paramètres
+* `<token>` : Token d'authentification de la session
+* `<id>` : ID du produit
+
+### Réponse JSON
+    {
+      "success": true,
+      "product": {
+        "id": 1,
+        "name": "<Product name>",
+        "description": "<Product description>",
+        "is_loan": true/false,
+        "location": {
+          "begin_date": "yyyy.mm.dd",
+          "end_date": "yyyy.mm.dd"
+        }
+      }
+    }
+
+## Emprunt d'un produit
+### Méthode HTTP
 `PUT`
 
-#### URL
-    https://inventory-dev.ing.he-arc.ch/api/rest/<token>/products/<id>/loan
+### URL
+    https://inventory-dev.ing.he-arc.ch/api/rest/<token>/products/<id>/loan?beginDate=<begin_date>&endDate=<end_date>
 
-### Retour d'un matériel
-#### Méthode HTTP
+#### Paramètres
+* `<token>` : Token d'authentification de la session
+* `<id>` : ID du produit
+* `<begin_date>` : Date de début de l'emprunt
+* `<end_date>`: Date de fin de l'emprunt
+
+### Réponse JSON
+    {
+      "success": true
+    }
+
+## Retour d'un produit
+### Méthode HTTP
 `PUT`
 
-#### URL
+### URL
     https://inventory-dev.ing.he-arc.ch/api/rest/<token>/products/<id>/return
+
+#### Paramètres
+* `<token>` : Token d'authentification de la session
+* `<id>` : ID du produit
+
+### Réponse JSON
+    {
+      "success": true
+    }
+
+## Recherche d'un produit
+### Méthode HTTP
+`GET`
+
+### URL
+    https://inventory-dev.ing.he-arc.ch/api/rest/<token>/search?query=<term>
+
+#### Paramètres
+* `<token>` : Token d'authentification de la session
+* `<term>` : Terme(s) recherché(s)
+
+### Réponse JSON
+    {
+      "success": true,
+      "number_results": 3,
+      "results": [
+        "product1": {…},
+        "product2": {…},
+        "product3": {…}
+      ]
+    }
+
+## Message d'erreur du serveur
+Lorsque les paramètres sont incorrects, par exemple l'ID du produit renseigné n'existe pas, le serveur retourne un message d'erreur.
+
+### Réponse JSON
+    {
+      "success": false,
+      "error": "<Error description>"
+    }
