@@ -6,7 +6,7 @@
 `GET`
 
 ### URL
-    https://inventory-dev.ing.he-arc.ch/api/login/<username>/<md5_password>
+    https://inventory-dev.ing.he-arc.ch/api/login/<username>/<md5_password>/
 
 #### Paramètres
 * `<username>` : Nom d'utilisateur
@@ -24,7 +24,7 @@
 `GET`
 
 ### URL
-    https://inventory-dev.ing.he-arc.ch/api/rest/<token>/products/<id>/details
+    https://inventory-dev.ing.he-arc.ch/api/rest/<token>/products/<id>/details/
 
 #### Paramètres
 * `<token>` : Token d'authentification de la session
@@ -50,7 +50,7 @@
 `PUT`
 
 ### URL
-    https://inventory-dev.ing.he-arc.ch/api/rest/<token>/products/<id>/loan?beginDate=<begin_date>&endDate=<end_date>
+    https://inventory-dev.ing.he-arc.ch/api/rest/<token>/products/<id>/loan/<begin_date>/<end_date>/
 
 #### Paramètres
 * `<token>` : Token d'authentification de la session
@@ -68,7 +68,7 @@
 `PUT`
 
 ### URL
-    https://inventory-dev.ing.he-arc.ch/api/rest/<token>/products/<id>/return
+    https://inventory-dev.ing.he-arc.ch/api/rest/<token>/products/<id>/return/
 
 #### Paramètres
 * `<token>` : Token d'authentification de la session
@@ -84,7 +84,7 @@
 `GET`
 
 ### URL
-    https://inventory-dev.ing.he-arc.ch/api/rest/<token>/search?query=<term>
+    https://inventory-dev.ing.he-arc.ch/api/rest/<token>/search/<term>/
 
 #### Paramètres
 * `<token>` : Token d'authentification de la session
