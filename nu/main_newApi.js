@@ -387,3 +387,11 @@ function printError(elementId, response) {
 	document.getElementById(elementId).innerHTML = response.error;
 	console.log("Error: " + response.error);
 }
+
+
+/*
+Démarrage du scan de codes-barres et codes QR.
+*/
+function scanCode() {
+	document.getElementById('scanCode_response').innerHTML = "42";
+}
