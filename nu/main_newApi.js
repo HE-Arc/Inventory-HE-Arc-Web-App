@@ -31,7 +31,7 @@ Authentification de l'utilisateur.
 */
 function login(username, password) {
 	// Construction de l'URL de login
-	var loginUrl = makeLoginUrl(username, password);
+	var loginUrl = makeUrlLogin(username, password);
 	console.log("Login with this username: " + username);
 	console.log("URL to login:\n" + loginUrl);
 
@@ -43,7 +43,7 @@ function login(username, password) {
 /*
 Construction de l'URL de login.
 */
-function makeLoginUrl(username, password) {
+function makeUrlLogin(username, password) {
 	const loginUrlBase = "https://demo6654639.mockable.io/api/login/";
 
 	return loginUrlBase + username + "/" + password;
@@ -98,7 +98,7 @@ Récupération des détails d'un produit.
 */
 function getProductDetails(productId) {
 	// Construction de l'URL
-	var url = makeGetProductDetailsUrl(productId);
+	var url = makeUrlGetProductDetails(productId);
 	console.log("URL to retrieve details of product with ID " + productId + ":\n" + url);
 
 	// Envoi de la requête
@@ -109,7 +109,7 @@ function getProductDetails(productId) {
 /*
 Construction de l'URL pour l'affichage d'un produit.
 */
-function makeGetProductDetailsUrl(productId) {
+function makeUrlGetProductDetails(productId) {
 	var urlClass = "products/";
 	var urlMethod = "details";
 
@@ -163,7 +163,7 @@ Recherche d'un produit par son nom.
 */
 function searchProductByName(term) {
 	// Construction de l'URL
-	var url = makeSearchProductByNameUrl(term);
+	var url = makeUrlSearchProductByName(term);
 	console.log("URL to search the product with the name \"" + term + "\":\n" + url);
 
 	// Envoi de la requête
@@ -174,11 +174,10 @@ function searchProductByName(term) {
 /*
 Construction de l'URL pour la recherche d'un produit.
 */
-function makeSearchProductByNameUrl(term) {
-	var urlMethod = "search";
-	var urlParam = "?query=";
+function makeUrlSearchProductByName(term) {
+	var urlMethod = "search/";
 
-	return urlBase + theToken + "/" + urlMethod + urlParam + term;
+	return urlBase + theToken + "/" + urlMethod + term;
 }
 
 
@@ -194,18 +193,10 @@ function processSearchProductByName(response) {
 		// Affichage des résultats
 		document.getElementById('searchProductByName_response').innerHTML =
 				"Nombre de résultats : " + response.number_results;
-
-		// Affichage de la location et du retour du produit
-		document.getElementById('loanProduct').style.display = 'block';
-		document.getElementById('returnProduct').style.display = 'block';
 	}
 	else {
 		// Affichage de l'erreur
 		printError('searchProductByName_response', response);
-
-		// Masquage de la location et du retour du produit
-		document.getElementById('loanProduct').style.display = 'none';
-		document.getElementById('returnProduct').style.display = 'none';
 	}
 }
 
@@ -227,7 +218,7 @@ Emprunt d'un produit.
 */
 function loanProduct(productId, beginDate, endDate) {
 	// Construction de l'URL
-	var url = makeLoanProductUrl(productId, beginDate, endDate);
+	var url = makeUrlLoanProduct(productId, beginDate, endDate);
 	console.log("URL to loan the product with ID " + productId
 			+ " from the " + beginDate
 			+ " to the " + endDate
@@ -241,15 +232,11 @@ function loanProduct(productId, beginDate, endDate) {
 /*
 Construction de l'URL pour la recherche d'un produit.
 */
-function makeLoanProductUrl(productId, beginDate, endDate) {
+function makeUrlLoanProduct(productId, beginDate, endDate) {
 	var urlClass = "products/";
-	var urlMethod = "loan";
-	var urlParam1 = "?beginDate=";
-	var urlParam2 = "&endDate=";
+	var urlMethod = "loan/";
 
-	return urlBase + theToken + "/" + urlClass + productId + "/" + urlMethod
-			+ urlParam1 + beginDate
-			+ urlParam2 + endDate;
+	return urlBase + theToken + "/" + urlClass + productId + beginDate + "/" + endDate;
 }
 
 
@@ -286,7 +273,7 @@ Retour d'un produit.
 */
 function returnProduct(productId) {
 	// Construction de l'URL
-	var url = makeReturnProductUrl(productId);
+	var url = makeUrlReturnProduct(productId);
 	console.log("URL to return the product with ID " + productId + ":\n" + url);
 
 	// Envoi de la requête
@@ -297,7 +284,7 @@ function returnProduct(productId) {
 /*
 Construction de l'URL pour la recherche d'un produit.
 */
-function makeReturnProductUrl(productId) {
+function makeUrlReturnProduct(productId) {
 	var urlClass = "products/";
 	var urlMethod = "return";
 
@@ -393,5 +380,22 @@ function printError(elementId, response) {
 Démarrage du scan de codes-barres et codes QR.
 */
 function scanCode() {
-	document.getElementById('scanCode_response').innerHTML = "42";
+	let scanner = new Instascan.Scanner({ video: document.getElementById('scanCodePreview') });
+	scanner.addListener('scan', function (content) {
+		console.log("QR code detected and processed : [" + content + "]");
+
+		// Affichage du contenu du code QR
+		document.getElementById("scanCode_response").innerHTML = "Found QR code: [" + content + "]";
+
+		getProductDetails(content);
+	});
+	Instascan.Camera.getCameras().then(function (cameras) {
+		if (cameras.length > 0) {
+			scanner.start(cameras[0]);
+		} else {
+			console.error('No cameras found.');
+		}
+	}).catch(function (e) {
+		console.error(e);
+	});
 }

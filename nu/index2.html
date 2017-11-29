@@ -5,6 +5,7 @@
 <head>
 	<title>Inventory-HE-Arc-Web-App</title>
 	<meta charset="utf-8">
+	<script src="tests/codeScanning/js/instascan.min.js"></script>
 	<script src="main_newApi.js"></script>
 </head>
 
@@ -52,6 +53,9 @@
 <div id="scanCode" style="display:none">
 	<h2>Scan a barcode or a QR code</h2>
 	<div>
+
+		<video id="scanCodePreview"></video>
+
 		<button onclick="scanCode()">Start camera</button>
 	</div>
 	<p id="scanCode_response"></p>
