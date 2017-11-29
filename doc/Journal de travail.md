@@ -1,6 +1,28 @@
 # Journal de travail
 
 
+## Mardi 28 novembre 2017
+* Ajout de la recherche d'un produit par nom à l'API.
+* Adaptation du code pour la nouvelle API.
+* Amélioration de l'interface.
+
+4 heures
+
+
+## Lundi 27 novembre 2017
+* Mise à jour de l'API.
+
+2.5 heures
+
+
+## Mercredi 22 novembre 2017
+### Séance hebdomadaire
+* Rechercher une bibliothèque JavaScript de scan de codes-barres et codes QR.
+  * Voir du côté de [WebCodeCamJS](https://atandrastoth.co.uk/main/pages/plugins/webcodecamjs/), [andrastoth/webcodecamjs sur GitHub](https://github.com/andrastoth/webcodecamjs).
+
+0.5 heure
+
+
 ## Mardi 21 novembre 2017
 * Mise en place du scan de codes-barres et de codes QR.
   * Mise en place d'[une page de test](https://armanddelessert.github.io/).
