@@ -193,6 +193,29 @@ function processSearchProductByName(response) {
 		// Affichage des résultats
 		document.getElementById('searchProductByName_response').innerHTML =
 				"Nombre de résultats : " + response.number_results;
+
+		document.getElementById('searchProductByName_response').innerHTML += "<ul>";
+		for (i = 0; i < response.number_results; ++i) {
+			var resultId = "searchProductByName_result" + i;
+
+			document.getElementById('searchProductByName_response').innerHTML +=
+					"<li>" + "<a " + "id=\"" + resultId + "\"" + " href=\"" + "#" + "\">"
+					+ response.results[i].id
+					+ ": "
+					+ response.results[i].name
+					+ "</li>" + "</a>";
+
+			document.getElementById(resultId).onclick = function() {
+				// Recherche du produit sélectionné
+				productId = response.result[i].id;
+				getProductDetails(productId);
+
+				alert("You have clicked on the product " + response.result[i].id + "!"); // DEBUG
+
+				return false;
+			}
+		}
+		document.getElementById('searchProductByName_response').innerHTML += "</ul>";
 	}
 	else {
 		// Affichage de l'erreur
@@ -387,7 +410,9 @@ function scanCode() {
 		// Affichage du contenu du code QR
 		document.getElementById("scanCode_response").innerHTML = "Found QR code: [" + content + "]";
 
-		getProductDetails(content);
+		// Recherche du produit correspondant
+		productId = content;
+		getProductDetails(productId);
 	});
 	Instascan.Camera.getCameras().then(function (cameras) {
 		if (cameras.length > 0) {
