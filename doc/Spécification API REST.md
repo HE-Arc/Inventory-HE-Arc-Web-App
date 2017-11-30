@@ -95,9 +95,9 @@
       "success": true,
       "number_results": 3,
       "results": [
-        "product1": {…},
-        "product2": {…},
-        "product3": {…}
+        {…},
+        {…},
+        {…}
       ]
     }
 
