@@ -1,6 +1,58 @@
 # Journal de travail
 
 
+# Mardi 5 décembre 2017
+* Recherche d'autres bibliothèques de scan de codes 1D/2D (codes-barres, codes QR).
+  * [jsQRScan](https://blog.niap3d.com/fr/4,10,news-76-jsQRScan-scanner-un-code-QR-en-Javascript.html) : Scan de codes QR uniquement, basé sur QR Code Scanner de LazarSoft.
+  * [JavaScript Barcode Scanner](http://www.webondevices.com/javascript-barcode-scanner/) : Scan de codes-barres uniquement.
+* Intégration de la bibliothèque WebCodeCamJS dans la page de test.
+  * Possibilité de scanner les codes QR et les codes-barres.
+  * Testé sur iOS 11, le scan fonctionne mais la caméra dorsale n'est pas détectée (caméra frontale uniquement).
+* [Mise en ligne de la page de test.](https://armanddelessert.github.io/apiTester/index.html)
+
+4 heures
+
+
+# Lundi 4 décembre 2017
+* Ajout d'un lien dans les résultats de la recherche de produits par nom :
+  * Utilisation d'`addEventListener()`.
+    * Problème : La fonction est appelée à la déclaration et non lors du clic.
+      * Non, c'est juste qu'on ne peut pas passer de paramètres à la fonction...
+    * Problème : La fonction du `addEventListener` n'est pas appelée.
+      * Ça fonctionne pourtant dans un fichier HTML tout simple...
+
+
+2 heures
+
+
+## Mercredi 29 novembre 2017
+### Séance hebdomadaire
+* Pour le problème d'affichage du JSON dans la page HTML :
+  * Remplacer les caractères spéciaux ("<", ">", """, etc.) par leurs entités HTML ("&lsaquo;", "&rsaquo;", "&quot;", etc.).
+* Commencer le rapport dès cette semaine :
+  * Noter les recherches sur les bibliothèques de scan de codes 1D/2D (codes-barres, codes QR).
+  * Faire un comparatif des différentes bibilothèques de scan.
+  * Quel est le type de code-barres utilisé ?
+    * Il s'agit du **Code 128 bar** (indiqué par le code **`^BC`**) selon [la page d'aide](http://labelary.com/docs.html).
+
+#### Pour la prochaine fois :
+* Commencer le rapport.
+* Continuer la recherche de bibliothèques JavaScript de scan de codes et comparer les différentes bibliothèques trouvées.
+  * Choisir la plus adaptée (scan de codes codes-barres et codes QR, scan à la volée, mise en place facile, etc.).
+  * Ajouter ce comparatif au rapport.
+* Intégrer la bibliothèque de scan choisie dans la page HTML.
+  * Si 2 bibliothèques séparées pour chacun des types de codes (codes-barres, code QR), ajouter un bouton à la page HTML pour switcher de l'une à l'autre.
+* Afficher les résultats de la recherche de produit par nom et pouvoir sélectionner un résultat.
+
+### Travail sur le projet
+* Inclusion du scan de codes QR dans la page de test.
+* Test de mise en place du [JSON Server](https://github.com/typicode/json-server) pour les tests en local.
+  * Problème avec l'installation de Node.js (pour npm).
+* Début du rapport.
+
+6 heures
+
+
 ## Mardi 28 novembre 2017
 * Ajout de la recherche d'un produit par nom à l'API.
 * Adaptation du code pour la nouvelle API.
@@ -37,7 +89,7 @@
   * Scan de codes QR : [QR Code scanner](https://webqr.com/index.html),
 [LazarSoft/jsqrcode sur GitHub](https://github.com/LazarSoft/jsqrcode) (ne fonctionne que sur une image fixe, pas avec la caméra ?).
   * Scan de codes QR : [Instascan](https://schmich.github.io/instascan/),
-[schmich/instascan](https://github.com/schmich/instascan).
+[schmich/instascan sur GitHub](https://github.com/schmich/instascan).
 
 2 heures
 
