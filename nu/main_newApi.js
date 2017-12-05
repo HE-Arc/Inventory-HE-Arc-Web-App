@@ -191,36 +191,66 @@ function processSearchProductByName(response) {
 		console.log("Complete response:\n" + JSON.stringify(response));
 
 		// Affichage des résultats
-		document.getElementById('searchProductByName_response').innerHTML =
-				"Nombre de résultats : " + response.number_results;
+		var responseSection = document.getElementById('searchProductByName_response');
+		responseSection.innerHTML = "Nombre de résultats : " + response.number_results;
+		responseSection.innerHTML += "</br>";
 
-		document.getElementById('searchProductByName_response').innerHTML += "<ul>";
+		responseSection.innerHTML += "<ul id=\"searchProductByName_list\"></ul>";
+		var resultsListSection = document.getElementById('searchProductByName_list');
 		for (i = 0; i < response.number_results; ++i) {
 			var resultId = "searchProductByName_result" + i;
 
-			document.getElementById('searchProductByName_response').innerHTML +=
+			resultsListSection.innerHTML +=
 					"<li>" + "<a " + "id=\"" + resultId + "\"" + " href=\"" + "#" + "\">"
 					+ response.results[i].id
 					+ ": "
 					+ response.results[i].name
-					+ "</li>" + "</a>";
-
+					+ "</a>" + "</li>";
+/*
+			responseSection.innerHTML +=
+					"<li>" + "<a " + "href=\"" + makeUrlGetProductDetails(response.results[i].id) + "\">"
+					+ response.results[i].id
+					+ ": "
+					+ response.results[i].name
+					+ "</a>" + "</li>";
+*//*
 			document.getElementById(resultId).onclick = function() { // DEBUG: N'est pas appelé lors du clic... Pourquoi ?
 				// Recherche du produit sélectionné
-				productId = response.result[i].id;
+				productId = response.results[i].id;
 				getProductDetails(productId);
 
-				alert("You have clicked on the product " + response.result[i].id + "!"); // DEBUG
+				alert("You have clicked on the product " + response.results[i].id + "!"); // DEBUG
 
 				return false;
 			}
+*/
+//			document.getElementById(resultId).addEventListener("click", onSearchResultSelection(response), false);
+			var truc = document.getElementById(resultId);
+			document.getElementById(resultId).addEventListener("click", function()
+					{
+						alert("Clicked!");
+						/*
+						productId = response.results[i].id;
+						getProductDetails(productId);*/
+					}, false);
 		}
-		document.getElementById('searchProductByName_response').innerHTML += "</ul>";
+//		responseSection.innerHTML += "</ul>";
 	}
 	else {
 		// Affichage de l'erreur
 		printError('searchProductByName_response', response);
 	}
+}
+
+
+function onSearchResultSelection(response) {
+	// Recherche du produit sélectionné
+	productId = response.results[i].id;
+	getProductDetails(productId);
+
+	alert("You have clicked on the product " + response.results[i].id + "!"); // DEBUG
+
+	return false;
 }
 
 
