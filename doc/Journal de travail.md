@@ -1,6 +1,12 @@
 # Journal de travail
 
 
+# Mercredi 6 décembre 2017
+
+
+_ heure
+
+
 # Mardi 5 décembre 2017
 * Recherche d'autres bibliothèques de scan de codes 1D/2D (codes-barres, codes QR).
   * [jsQRScan](https://blog.niap3d.com/fr/4,10,news-76-jsQRScan-scanner-un-code-QR-en-Javascript.html) : Scan de codes QR uniquement, basé sur QR Code Scanner de LazarSoft.
@@ -28,10 +34,10 @@
 ## Mercredi 29 novembre 2017
 ### Séance hebdomadaire
 * Pour le problème d'affichage du JSON dans la page HTML :
-  * Remplacer les caractères spéciaux ("<", ">", """, etc.) par leurs entités HTML ("&lsaquo;", "&rsaquo;", "&quot;", etc.).
+  * Remplacer les caractères spéciaux ("`<`", "`>`", "`"`", etc.) par leurs entités HTML ("`&lsaquo;`", "`&rsaquo;`", "`&quot;`", etc.).
 * Commencer le rapport dès cette semaine :
   * Noter les recherches sur les bibliothèques de scan de codes 1D/2D (codes-barres, codes QR).
-  * Faire un comparatif des différentes bibilothèques de scan.
+  * Faire un comparatif des différentes bibliothèque de scan.
   * Quel est le type de code-barres utilisé ?
     * Il s'agit du **Code 128 bar** (indiqué par le code **`^BC`**) selon [la page d'aide](http://labelary.com/docs.html).
 
@@ -41,7 +47,7 @@
   * Choisir la plus adaptée (scan de codes codes-barres et codes QR, scan à la volée, mise en place facile, etc.).
   * Ajouter ce comparatif au rapport.
 * Intégrer la bibliothèque de scan choisie dans la page HTML.
-  * Si 2 bibliothèques séparées pour chacun des types de codes (codes-barres, code QR), ajouter un bouton à la page HTML pour switcher de l'une à l'autre.
+  * Si choix de 2 bibliothèques séparées pour chacun des types de codes (codes-barres, code QR), ajouter un bouton à la page HTML pour switcher de l'une à l'autre.
 * Afficher les résultats de la recherche de produit par nom et pouvoir sélectionner un résultat.
 
 ### Travail sur le projet
