@@ -64,7 +64,8 @@ function processLogin(response) {
 
 		// Affichage des autres commandes
 		document.getElementById('showProduct').style.display = 'block';
-		document.getElementById('scanCode').style.display = 'block';
+		document.getElementById('scanInstascan').style.display = 'block';
+		document.getElementById('scanWebCodeCamJS').style.display = 'block';
 		document.getElementById('searchProductByName').style.display = 'block';
 	}
 	else {
@@ -430,15 +431,16 @@ function printError(elementId, response) {
 
 
 /*
-Démarrage du scan de codes-barres et codes QR.
+Scanner Instascan
+Démarrage du scan de codes QR.
 */
-function scanCode() {
-	let scanner = new Instascan.Scanner({ video: document.getElementById('scanCodePreview') });
+function scanInstascan() {
+	let scanner = new Instascan.Scanner({ video: document.getElementById('scanInstascanPreview') });
 	scanner.addListener('scan', function (content) {
 		console.log("QR code detected and processed : [" + content + "]");
 
 		// Affichage du contenu du code QR
-		document.getElementById("scanCode_response").innerHTML = "Found QR code: [" + content + "]";
+		document.getElementById("scanInstascan_response").innerHTML = "Found QR code: " + content;
 
 		// Recherche du produit correspondant
 		productId = content;
@@ -452,5 +454,31 @@ function scanCode() {
 		}
 	}).catch(function (e) {
 		console.error(e);
+	});
+}
+
+
+/*
+Scanner WebCodeCanJS
+Démarrage du scan de codes-barres et codes QR.
+*/
+function scanWebCodeCamJS() {
+	var txt = "innerText" in HTMLElement.prototype ? "innerText" : "textContent";
+	var arg = {
+		resultFunction: function(result) {
+			// Affichage du contenu du code QR
+			document.getElementById("scanWebCodeCamJS_response").innerHTML = "Found " + result.format + ": " + result.code;
+
+			// Recherche du produit correspondant
+			productId = result.code;
+			getProductDetails(productId);
+		}
+	};
+	var decoder = new WebCodeCamJS("canvas").buildSelectMenu('select', 'environment|back').init(arg).play();
+	/*  Without visible select menu
+			var decoder = new WebCodeCamJS("canvas").buildSelectMenu(document.createElement('select'), 'environment|back').init(arg).play();
+	*/
+	document.querySelector('select').addEventListener('change', function() {
+		decoder.stop().play();
 	});
 }
