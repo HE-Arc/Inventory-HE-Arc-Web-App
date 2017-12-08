@@ -160,7 +160,6 @@ function processLogin(response) {
 
 		// Affichage des autres commandes
 		document.getElementById('showProduct').style.display = 'block';
-		document.getElementById('scanInstascan').style.display = 'block';
 		document.getElementById('scanWebCodeCamJS').style.display = 'block';
 		document.getElementById('searchProductByName').style.display = 'block';
 	}
@@ -485,34 +484,6 @@ Affichage de l'erreur.
 function printError(elementId, response) {
 	document.getElementById(elementId).innerHTML = response.error;
 	console.log("Error: " + response.error);
-}
-
-
-/*
-Scanner Instascan
-Démarrage du scan de codes QR.
-*/
-function scanInstascan() {
-	let scanner = new Instascan.Scanner({ video: document.getElementById('scanInstascanPreview') });
-	scanner.addListener('scan', function (content) {
-		console.log("QR code detected and processed : [" + content + "]");
-
-		// Affichage du contenu du code QR
-		document.getElementById("scanInstascan_response").innerHTML = "Found QR code: " + content;
-
-		// Recherche du produit correspondant
-		productId = content;
-		getProductDetails(productId);
-	});
-	Instascan.Camera.getCameras().then(function (cameras) {
-		if (cameras.length > 0) {
-			scanner.start(cameras[0]);
-		} else {
-			console.error('No cameras found.');
-		}
-	}).catch(function (e) {
-		console.error(e);
-	});
 }
 
 
