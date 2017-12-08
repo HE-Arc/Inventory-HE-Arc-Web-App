@@ -1,7 +1,105 @@
 /*
-Constantes globales.
+Choix de l'API.
 */
-const urlBase = "https://demo6654639.mockable.io/api/rest/";
+// API définies
+const currentProdApi = 1;
+const currentDevApi = 2;
+const newApi = 3;
+
+// API utilisée
+const usedApi = newApi;
+
+// Constructions des URL
+if (usedApi == currentProdApi) {
+	const urlBase = "https://inventory.ing.he-arc.ch/api/rest/";
+
+	// URL pour le login
+	var loginUrl001 = "https://inventory.ing.he-arc.ch/api/login/";
+	var loginUrl002 = "/";
+	var loginUrl003 = "";
+
+	// URL pour l'affichage d'un produit
+	var urlGetProductDetails001 = urlBase;
+	var urlGetProductDetails002 = "/Product/info?productId=";
+	var urlGetProductDetails003 = "";
+
+	// URL pour la recherche d'un produit
+	var urlSearchProductByName001 = urlBase;
+	var urlSearchProductByName002 = "/search/";
+	var urlSearchProductByName003 = "/";
+
+	// URL pour l'emprunt d'un produit
+	var urlLoanProduct001 = urlBase;
+	var urlLoanProduct002 = "/Product/loan?productId=";
+	var urlLoanProduct003 = "&beginDate=";
+	var urlLoanProduct004 = "&endDate=";
+	var urlLoanProduct005 = "";
+
+	// URL pour le retour d'un produit
+	var urlReturnProduct001 = urlBase;
+	var urlReturnProduct002 = "/Product/returnProduct?productId=";
+	var urlReturnProduct003 = "";
+}
+else if (usedApi == currentDevApi) {
+	const urlBase = "http://inventory-dev.ing.he-arc.ch/api/rest/";
+
+	// URL pour le login
+	var loginUrl001 = "http://inventory-dev.ing.he-arc.ch/api/login/";
+	var loginUrl002 = "/";
+	var loginUrl003 = "";
+
+	// URL pour l'affichage d'un produit
+	var urlGetProductDetails001 = urlBase;
+	var urlGetProductDetails002 = "/Product/info?productId=";
+	var urlGetProductDetails003 = "";
+
+	// URL pour la recherche d'un produit
+	var urlSearchProductByName001 = urlBase;
+	var urlSearchProductByName002 = "/search/";
+	var urlSearchProductByName003 = "/";
+
+	// URL pour l'emprunt d'un produit
+	var urlLoanProduct001 = urlBase;
+	var urlLoanProduct002 = "/Product/loan?productId=";
+	var urlLoanProduct003 = "&beginDate=";
+	var urlLoanProduct004 = "&endDate=";
+	var urlLoanProduct005 = "";
+
+	// URL pour le retour d'un produit
+	var urlReturnProduct001 = urlBase;
+	var urlReturnProduct002 = "/Product/returnProduct?productId=";
+	var urlReturnProduct003 = "";
+}
+else if (usedApi == newApi) {
+	const urlBase = "https://demo6654639.mockable.io/api/rest/";
+
+	// URL pour le login
+	var loginUrl001 = "https://demo6654639.mockable.io/api/login/";
+	var loginUrl002 = "/";
+	var loginUrl003 = "/";
+
+	// URL pour l'affichage d'un produit
+	var urlGetProductDetails001 = urlBase;
+	var urlGetProductDetails002 = "/products/";
+	var urlGetProductDetails003 = "/details/";
+
+	// URL pour la recherche d'un produit
+	var urlSearchProductByName001 = urlBase;
+	var urlSearchProductByName002 = "/search/";
+	var urlSearchProductByName003 = "/";
+
+	// URL pour l'emprunt d'un produit
+	var urlLoanProduct001 = urlBase;
+	var urlLoanProduct002 = "/products/";
+	var urlLoanProduct003 = "/loan/";
+	var urlLoanProduct004 = "/";
+	var urlLoanProduct005 = "/";
+
+	// URL pour le retour d'un produit
+	var urlReturnProduct001 = urlBase;
+	var urlReturnProduct002 = "/products/";
+	var urlReturnProduct003 = "/return/";
+}
 
 
 /*
@@ -9,6 +107,7 @@ Variables globales.
 */
 var theToken;
 var productId;
+var resultProductsId = [];
 
 
 /*
@@ -18,7 +117,6 @@ Fonction du onclick du bouton de login.
 function login_onclick() {
 	// Username: "devweb.user", "devweb.manager", "devweb.admin"
 	// Password: "123456"
-	// MD5 Password Hash: "e10adc3949ba59abbe56e057f20f883e"
 
 	var username = document.getElementById('login_username').value;
 	var password = document.getElementById('login_password').value;
@@ -44,9 +142,7 @@ function login(username, password) {
 Construction de l'URL de login.
 */
 function makeUrlLogin(username, password) {
-	const loginUrlBase = "https://demo6654639.mockable.io/api/login/";
-
-	return loginUrlBase + username + "/" + password;
+	return loginUrl001 + username + loginUrl002 + password + loginUrl003;
 }
 
 
@@ -111,10 +207,7 @@ function getProductDetails(productId) {
 Construction de l'URL pour l'affichage d'un produit.
 */
 function makeUrlGetProductDetails(productId) {
-	var urlClass = "products/";
-	var urlMethod = "details";
-
-	return urlBase + theToken + "/" + urlClass + productId + "/" + urlMethod;
+	return urlGetProductDetails001 + theToken + urlGetProductDetails002 + productId + urlGetProductDetails003;
 }
 
 
@@ -176,9 +269,7 @@ function searchProductByName(term) {
 Construction de l'URL pour la recherche d'un produit.
 */
 function makeUrlSearchProductByName(term) {
-	var urlMethod = "search/";
-
-	return urlBase + theToken + "/" + urlMethod + term;
+	return urlSearchProductByName001 + theToken + urlSearchProductByName002 + term + urlSearchProductByName003;
 }
 
 
@@ -207,51 +298,23 @@ function processSearchProductByName(response) {
 					+ ": "
 					+ response.results[i].name
 					+ "</a>" + "</li>";
-/*
-			responseSection.innerHTML +=
-					"<li>" + "<a " + "href=\"" + makeUrlGetProductDetails(response.results[i].id) + "\">"
-					+ response.results[i].id
-					+ ": "
-					+ response.results[i].name
-					+ "</a>" + "</li>";
-*//*
-			document.getElementById(resultId).onclick = function() { // DEBUG: N'est pas appelé lors du clic... Pourquoi ?
-				// Recherche du produit sélectionné
-				productId = response.results[i].id;
-				getProductDetails(productId);
-
-				alert("You have clicked on the product " + response.results[i].id + "!"); // DEBUG
-
-				return false;
-			}
-*/
-//			document.getElementById(resultId).addEventListener("click", onSearchResultSelection(response), false);
-			var truc = document.getElementById(resultId);
-			document.getElementById(resultId).addEventListener("click", function()
-					{
-						alert("Clicked!");
-						/*
-						productId = response.results[i].id;
-						getProductDetails(productId);*/
-					}, false);
 		}
-//		responseSection.innerHTML += "</ul>";
+
+		for (i = 0; i < response.number_results; ++i) {
+			resultProductsId[i] = response.results[i].id;
+
+			var resultId = "searchProductByName_result" + i;
+			document.getElementById(resultId).onclick = function(mouseEvent) {
+				// Recherche du produit sélectionné
+				productId = resultProductsId[mouseEvent.srcElement.id["searchProductByName_result".length]];
+				getProductDetails(productId);
+			}
+		}
 	}
 	else {
 		// Affichage de l'erreur
 		printError('searchProductByName_response', response);
 	}
-}
-
-
-function onSearchResultSelection(response) {
-	// Recherche du produit sélectionné
-	productId = response.results[i].id;
-	getProductDetails(productId);
-
-	alert("You have clicked on the product " + response.results[i].id + "!"); // DEBUG
-
-	return false;
 }
 
 
@@ -284,13 +347,11 @@ function loanProduct(productId, beginDate, endDate) {
 
 
 /*
-Construction de l'URL pour la recherche d'un produit.
+Construction de l'URL pour l'emprunt d'un produit.
 */
 function makeUrlLoanProduct(productId, beginDate, endDate) {
-	var urlClass = "products/";
-	var urlMethod = "loan/";
-
-	return urlBase + theToken + "/" + urlClass + productId + beginDate + "/" + endDate;
+	return urlLoanProduct001 + theToken + urlLoanProduct002 + productId
+			+ urlLoanProduct003 + beginDate + urlLoanProduct004 + endDate + urlLoanProduct005;
 }
 
 
@@ -336,13 +397,10 @@ function returnProduct(productId) {
 
 
 /*
-Construction de l'URL pour la recherche d'un produit.
+Construction de l'URL pour le retour d'un produit.
 */
 function makeUrlReturnProduct(productId) {
-	var urlClass = "products/";
-	var urlMethod = "return";
-
-	return urlBase + theToken + "/" + urlClass + productId + "/" + urlMethod;
+	return urlReturnProduct001 + theToken + urlReturnProduct002 + productId + urlReturnProduct003;
 }
 
 
