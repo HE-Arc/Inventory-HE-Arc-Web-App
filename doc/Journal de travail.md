@@ -1,13 +1,35 @@
 # Journal de travail
 
 
-# Mercredi 6 décembre 2017
+## Vendredi 8 décembre 2017
+* Ajout du support de l'ancienne API en plus de la nouvelle API.
+* Suppression du scanner de QR codes _Instascan_.
+
+3.5 heures
 
 
-_ heure
+## Mercredi 6 décembre 2017
+### Séance hebdomadaire
+* Débug du problème de sélection des résultats de la recherche d'un produit.
+  * Solution : L'ajout du `onClick()` sur le résultat a été déplacé dans une seconde boucle `for`.
+
+#### Pour la prochaine fois :
+* Refactoring du code.
+* Réfléchir à la suite du projet : Quel partie du projet continuer ? plusieurs voies possibles :
+  * Finir l'implémentation des fonctionnalités, améliorer l'interface utilisateur :
+    * Corriger le choix de la caméra.
+    * Rendre l'interface responsive sur mobile.
+    * Diminuer les actions nécessaires à l'utilisateur lors de l'utilisation.
+  * Faire la partie PWA :
+    * Mise en cache des produits empruntés par l'utilisateur.
+* Faire le rapport.
+
+* Rendre réponse au prof sur le choix des objectifs pour la prochaine fois.
+
+1.5 heure
 
 
-# Mardi 5 décembre 2017
+## Mardi 5 décembre 2017
 * Recherche d'autres bibliothèques de scan de codes 1D/2D (codes-barres, codes QR).
   * [jsQRScan](https://blog.niap3d.com/fr/4,10,news-76-jsQRScan-scanner-un-code-QR-en-Javascript.html) : Scan de codes QR uniquement, basé sur QR Code Scanner de LazarSoft.
   * [JavaScript Barcode Scanner](http://www.webondevices.com/javascript-barcode-scanner/) : Scan de codes-barres uniquement.
@@ -19,7 +41,7 @@ _ heure
 4 heures
 
 
-# Lundi 4 décembre 2017
+## Lundi 4 décembre 2017
 * Ajout d'un lien dans les résultats de la recherche de produits par nom :
   * Utilisation d'`addEventListener()`.
     * Problème : La fonction est appelée à la déclaration et non lors du clic.
