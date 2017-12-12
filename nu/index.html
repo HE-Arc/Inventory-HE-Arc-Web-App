@@ -4,8 +4,15 @@
 
 <head>
 	<title>Inventory-HE-Arc-Web-App</title>
+
 	<meta charset="utf-8">
-	<script src="main.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<script type="text/javascript" src="js/qrcodelib.js"></script>
+	<script type="text/javascript" src="js/webcodecamjs.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+
+	<link rel="stylesheet" href="css/foundation.css">
 </head>
 
 <body>
@@ -13,9 +20,11 @@
 
 <h1>Inventory-HE-Arc-Web-App</h1>
 
+<hr/>
 
-<div>
-	<h2 class="form-signin-heading">Please sign in</h2>
+
+<div id="signIn">
+	<h2>Please sign in</h2>
 
 	<p>To login, use the login details below:</p>
 	<p>
@@ -27,69 +36,102 @@
 	</p>
 
 	<div>
-		<input class="form-control" type="text" required name="username" id="login_username" placeholder="Username" value="devweb.user">
-		<input class="form-control" type="password" required name="password" id="login_password" placeholder="Password" value="123456">
-		<button class="btn" onclick="login_onclick()">Sign in</button>
+		<input type="text" required name="username" id="login_username" placeholder="Username" value="devweb.user">
+		<input type="password" required name="password" id="login_password" placeholder="Password" value="123456">
+		<button onclick="login_onclick()">Sign in</button>
 	</div>
-
 	<p id="login_response"></p>
 </div>
 
+<hr/>
 
-<div>
+
+<div id="showProduct" style="display:none">
 	<h2>Show a product</h2>
 	<div>
-		<input class="form-control" type="number" required name="productId" id="showProductDetails_productId" placeholder="Product ID">
-		<button class="btn" onclick="getProductDetails_onclick()">Show product</button>
+		<input type="number" required name="productId" id="showProductDetails_productId" placeholder="Product ID">
+		<button onclick="getProductDetails_onclick()">Show product</button>
 	</div>
-
 	<p id="getProductDetails_response"></p>
 </div>
 
 
-<div>
-	<h2>Loan a product</h2>
+<div id="scanWebCodeCamJS" style="display:none">
+	<h2>Scan a barcode or a QR code</h2>
 	<div>
-		<input class="form-control" type="number" required name="productId" id="loanProduct_productId" placeholder="Product ID">
-		<input class="form-control" type="date" required name="beginDate" id="beginDate_productId">
-		<input class="form-control" type="date" required name="endDate" id="endDate_productId">
-		<button class="btn" onclick="loanProduct_onclick()">Loan</button>
+		<canvas id="scanWebCodeCamJSPreview"></canvas>
+		<br/>
+		<select></select>
+		<br/>
+		<button onclick="scanWebCodeCamJS()">Start scan WebCodeCamJS</button>
 	</div>
+	<p id="scanWebCodeCamJS_response"></p>
+</div>
 
+
+<div id="searchProductByName" style="display:none">
+	<h2>Search a product by name</h2>
+	<div>
+		<input type="text" required name="term" id="searchProductByName_term" placeholder="Product to search…">
+		<button onclick="searchProductByName_onclick()">Search</button>
+	</div>
+	<p id="searchProductByName_response"></p>
+</div>
+
+<hr/>
+
+
+<div id="loanProduct" style="display:none">
+	<h2>Loan the product</h2>
+	<div>
+		<input type="date" required name="beginDate" id="beginDate_productId">
+		<input type="date" required name="endDate" id="endDate_productId">
+		<button onclick="loanProduct_onclick()">Loan</button>
+	</div>
 	<p id="loanProduct_response"></p>
 </div>
 
 
-<div>
-	<h2>Return a product</h2>
+<div id="returnProduct" style="display:none">
+	<h2>Return the product</h2>
 	<div>
-		<input class="form-control" type="number" required name="productId" id="returnProduct_productId" placeholder="Product ID">
-		<button class="btn" onclick="returnProduct_onclick()">Return</button>
+		<button onclick="returnProduct_onclick()">Return</button>
 	</div>
-
 	<p id="returnProduct_response"></p>
 </div>
 
+<hr/>
 
-<div>
-	<h2>Search a product by ID</h2>
-	<div>
-		<input class="form-control" type="number" required name="productId" id="searchProductById_productId" placeholder="Product ID">
-		<button class="btn" onclick="searchProductById_onclick()">Search</button>
-	</div>
+<script type="text/javascript">
+	// Ajout des focus lors de l'appuis sur Entrée dans les champs de texte
+	window.onload = function () {
+		// Login form
+		document.getElementById('login_username').onkeypress = function(e) {
+			if (e.keyCode == 13) {
+				login_onclick();
+			}
+		}
+		document.getElementById('login_password').onkeypress = function(e) {
+			if (e.keyCode == 13) {
+				login_onclick();
+			}
+		}
 
-	<p id="searchProductById_response"></p>
-</div>
+		// Show product form
+		document.getElementById('showProductDetails_productId').onkeypress = function(e) {
+			if (e.keyCode == 13) {
+				getProductDetails_onclick();
+			}
+		}
 
-
-<h2>Search a product by name</h2>
-	<div>
-		<input class="form-control" type="text" required name="term" id="searchProductByName_term" placeholder="Product to search…">
-		<button class="btn" onclick="searchProductByName_onclick()">Search</button>
-	</div>
-
-	<p id="searchProductByName_response"></p>
-</div>
+		// Search product form
+		document.getElementById('searchProductByName_term').onkeypress = function(e) {
+			if (e.keyCode == 13) {
+				searchProductByName_onclick();
+			}
+		}
+	};
+</script>
 
 </body>
 
