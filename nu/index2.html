@@ -4,8 +4,9 @@
 
 <head>
 	<title>Inventory-HE-Arc-Web-App</title>
+
 	<meta charset="utf-8">
-	<script type="text/javascript" src="tests/codeScanning/js/instascan.min.js"></script>
+
 	<script type="text/javascript" src="js/qrcodelib.js"></script>
 	<script type="text/javascript" src="js/webcodecamjs.js"></script>
 	<script type="text/javascript" src="main_newApi.js"></script>
@@ -95,6 +96,37 @@
 </div>
 
 <hr/>
+
+<script type="text/javascript">
+	// Ajout des focus lors de l'appuis sur Entrée dans les champs de texte
+	window.onload = function () {
+		// Login form
+		document.getElementById('login_username').onkeypress = function(e) {
+			if (e.keyCode == 13) {
+				login_onclick();
+			}
+		}
+		document.getElementById('login_password').onkeypress = function(e) {
+			if (e.keyCode == 13) {
+				login_onclick();
+			}
+		}
+
+		// Show product form
+		document.getElementById('showProductDetails_productId').onkeypress = function(e) {
+			if (e.keyCode == 13) {
+				getProductDetails_onclick();
+			}
+		}
+
+		// Search product form
+		document.getElementById('searchProductByName_term').onkeypress = function(e) {
+			if (e.keyCode == 13) {
+				searchProductByName_onclick();
+			}
+		}
+	};
+</script>
 
 </body>
 
