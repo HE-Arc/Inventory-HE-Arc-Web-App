@@ -1,6 +1,19 @@
 # Journal de travail
 
 
+## Mardi 12 décembre 2017
+* Installation de [JSON Server](https://github.com/typicode/json-server) et test.
+  * Ça fonctionne mais nécessite de refaire une (petite) base de données en JSON.
+* Debug du choix de la caméra sur iPad :
+  * Problème, il faut un Mac pour débuger sur Safari Mobile...
+* Ajout du focus sur les champs de texte lors de l'appuis sur la touche Entrée.
+* Responsive avec [Foundation framework](https://foundation.zurb.com/).
+* Réorganisation du dépôt GitHub et suppression des anciens fichiers de test.
+* [Mise en ligne de la page pour test.](https://armanddelessert.github.io/Inventory-HE-Arc-Web-App/index.html)
+
+6 heures
+
+
 ## Vendredi 8 décembre 2017
 * Ajout du support de l'ancienne API en plus de la nouvelle API.
 * Suppression du scanner de QR codes _Instascan_.
