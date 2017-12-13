@@ -28,7 +28,9 @@ var urlReturnProduct001, urlReturnProduct002, urlReturnProduct003;
 /*
 Initialisations.
 */
-window.addEventListener("load", selectApi); // Sélection de l'API
+// Sélection de l'API
+window.addEventListener("load", selectApi);
+
 
 /*
 Sélection de l'API.
@@ -73,6 +75,10 @@ function buildUrls() {
 		urlReturnProduct003 = "";
 	}
 	else if (chosenApi == currentDevApi) {
+		console.log("To login to the dev API, use the following login informations:\n" +
+				"Username: devweb.user or devweb.manager or devweb.admin\n" +
+				"Password: 123456");
+
 		const urlBase = "http://inventory-dev.ing.he-arc.ch/api/rest/";
 
 		// URL pour le login
@@ -103,6 +109,10 @@ function buildUrls() {
 		urlReturnProduct003 = "";
 	}
 	else if (chosenApi == newApi) {
+		console.log("To login to the new API on Mockable.io, use the following login informations:\n" +
+				"Username: devweb.user\n" +
+				"Password: 123456");
+
 		const urlBase = "https://demo6654639.mockable.io/api/rest/";
 
 		// URL pour le login
