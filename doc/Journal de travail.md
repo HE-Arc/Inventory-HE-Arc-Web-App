@@ -1,6 +1,32 @@
 # Journal de travail
 
 
+## Mardi 19 décembre 2017
+* Correction de la gestion de l'API actuelle.
+
+3 heures
+
+
+## Mercredi 13 décembre 2017
+### Séance hebdomadaire
+* Envoyer un email à Christophe pour le problème de blocage des requêtes multiorigines (Cross-Origin Request) avec l'API actuelle.
+* Bug du choix de la caméra sur iOS 11 : non prioritaire.
+* Ajouter le focus sur le champ email au chargement de la page.
+* Retirer le login pré-rempli dans le HTML.
+* Consulter [le journal de travail sur l'app *NextStop*](https://github.com/HE-Arc/progressive-web-app/wiki/Journal-de-travail) pour l'aspect PWA.
+
+### Pour la prochaine fois
+* Commencer l'aspect PWA.
+* Continuer le rapport.
+* Essayer de mettre en place le JSON Server pour pouvoir faire des requêtes sans être limité aux 10 URL sur Mockable.io.
+
+### Travail sur le projet
+* Essayé de définir des routes personnalisées pour [JSON Server](https://github.com/typicode/json-server) mais pas compris comment ça fonctionne...
+* Ajout de la liste déroulante pour le choix de l'API.
+
+4 heures
+
+
 ## Mardi 12 décembre 2017
 * Installation de [JSON Server](https://github.com/typicode/json-server) et test.
   * Ça fonctionne mais nécessite de refaire une (petite) base de données en JSON.
