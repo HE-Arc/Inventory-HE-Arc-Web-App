@@ -18,11 +18,11 @@ var productId;
 var resultProductsId = [];
 
 // Définition des variables pour la construction des URL
-var loginUrl001, loginUrl002, loginUrl003;
-var urlGetProductDetails001, urlGetProductDetails002, urlGetProductDetails003;
-var urlSearchProductByName001, urlSearchProductByName002, urlSearchProductByName003;
-var urlLoanProduct001, urlLoanProduct002, urlLoanProduct003, urlLoanProduct004, urlLoanProduct005;
-var urlReturnProduct001, urlReturnProduct002, urlReturnProduct003;
+var urlLogin;
+var urlGetProductDetails;
+var urlSearchProductByName;
+var urlLoanProduct;
+var urlReturnProduct;
 
 
 /*
@@ -51,118 +51,87 @@ function selectApi() {
 Construction des URL de l'API.
 */
 function buildUrls() {
-	if (chosenApi == currentProdApi) {
-		const urlBase = "https://inventory.ing.he-arc.ch/api/rest/";
+	switch (chosenApi) {
+		case currentProdApi: {
+			const urlBase = "https://inventory.ing.he-arc.ch/api/rest/";
 
-		// URL pour le login
-		loginUrl001 = "https://inventory.ing.he-arc.ch/api/login/";
-		loginUrl002 = "/";
-		loginUrl003 = "";
-		loginHttpMethod = "GET";
+			// URL pour le login
+			urlLogin = [ "https://inventory.ing.he-arc.ch/api/login/", "/", "" ];
+			loginHttpMethod = "GET";
 
-		// URL pour l'affichage d'un produit
-		urlGetProductDetails001 = urlBase;
-		urlGetProductDetails002 = "/Product/info?productId=";
-		urlGetProductDetails003 = "";
-		httpMethodGetProduct = "GET";
+			// URL pour l'affichage d'un produit
+			urlGetProductDetails = [ urlBase, "/Product/info?productId=", "" ];
+			httpMethodGetProduct = "GET";
 
-		// URL pour la recherche d'un produit
-		urlSearchProductByName001 = urlBase;
-		urlSearchProductByName002 = "/Product/search?term=";
-		urlSearchProductByName003 = "";
-		httpMethodSearchProduct = "GET";
+			// URL pour la recherche d'un produit
+			urlSearchProductByName = [ urlBase, "/Product/search?term=", "" ];
+			httpMethodSearchProduct = "GET";
 
-		// URL pour l'emprunt d'un produit
-		urlLoanProduct001 = urlBase;
-		urlLoanProduct002 = "/Product/loan?productId=";
-		urlLoanProduct003 = "&beginDate=";
-		urlLoanProduct004 = "&endDate=";
-		urlLoanProduct005 = "";
-		httpMethodLoanProduct = "GET";
+			// URL pour l'emprunt d'un produit
+			urlLoanProduct = [ urlBase, "/Product/loan?productId=", "&beginDate=", "&endDate=", "" ];
+			httpMethodLoanProduct = "GET";
 
-		// URL pour le retour d'un produit
-		urlReturnProduct001 = urlBase;
-		urlReturnProduct002 = "/Product/returnProduct?productId=";
-		urlReturnProduct003 = "";
-		httpMethodReturnProduct = "GET";
-	}
-	else if (chosenApi == currentDevApi) {
-		console.log("To login to the dev API, use the following login informations:\n" +
-				"Username: devweb.user or devweb.manager or devweb.admin\n" +
-				"Password: 123456");
+			// URL pour le retour d'un produit
+			urlReturnProduct = [ urlBase, "/Product/returnProduct?productId=", "" ];
+			httpMethodReturnProduct = "GET";
+			break;
+		}
+		case currentDevApi: {
+			console.log("To login to the dev API, use the following login informations:\n" +
+					"Username: devweb.user or devweb.manager or devweb.admin\n" +
+					"Password: 123456");
 
-		const urlBase = "https://inventory-dev.ing.he-arc.ch/api/rest/";
+			const urlBase = "https://inventory-dev.ing.he-arc.ch/api/rest/";
 
-		// URL pour le login
-		loginUrl001 = "https://inventory-dev.ing.he-arc.ch/api/login/";
-		loginUrl002 = "/";
-		loginUrl003 = "";
-		loginHttpMethod = "GET";
+			// URL pour le login
+			urlLogin = [ "https://inventory-dev.ing.he-arc.ch/api/login/", "/", "" ];
+			loginHttpMethod = "GET";
 
-		// URL pour l'affichage d'un produit
-		urlGetProductDetails001 = urlBase;
-		urlGetProductDetails002 = "/Product/info?productId=";
-		urlGetProductDetails003 = "";
-		httpMethodGetProduct = "GET";
+			// URL pour l'affichage d'un produit
+			urlGetProductDetails = [ urlBase, "/Product/info?productId=", "" ];
+			httpMethodGetProduct = "GET";
 
-		// URL pour la recherche d'un produit
-		urlSearchProductByName001 = urlBase;
-		urlSearchProductByName002 = "/Product/search?term=";
-		urlSearchProductByName003 = "";
-		httpMethodSearchProduct = "GET";
+			// URL pour la recherche d'un produit
+			urlSearchProductByName = [ urlBase, "/Product/search?term=", "" ];
+			httpMethodSearchProduct = "GET";
 
-		// URL pour l'emprunt d'un produit
-		urlLoanProduct001 = urlBase;
-		urlLoanProduct002 = "/Product/loan?productId=";
-		urlLoanProduct003 = "&beginDate=";
-		urlLoanProduct004 = "&endDate=";
-		urlLoanProduct005 = "";
-		httpMethodLoanProduct = "GET";
+			// URL pour l'emprunt d'un produit
+			urlLoanProduct = [ urlBase, "/Product/loan?productId=", "&beginDate=", "&endDate=", "" ];
+			httpMethodLoanProduct = "GET";
 
-		// URL pour le retour d'un produit
-		urlReturnProduct001 = urlBase;
-		urlReturnProduct002 = "/Product/returnProduct?productId=";
-		urlReturnProduct003 = "";
-		httpMethodReturnProduct = "GET";
-	}
-	else if (chosenApi == newApi) {
-		console.log("To login to the new API on Mockable.io, use the following login informations:\n" +
-				"Username: devweb.user\n" +
-				"Password: 123456");
+			// URL pour le retour d'un produit
+			urlReturnProduct = [ urlBase, "/Product/returnProduct?productId=", "" ];
+			httpMethodReturnProduct = "GET";
+			break;
+		}
+		case newApi: {
+			console.log("To login to the new API on Mockable.io, use the following login informations:\n" +
+					"Username: devweb.user\n" +
+					"Password: 123456");
 
-		const urlBase = "https://demo6654639.mockable.io/api/rest/";
+			const urlBase = "https://demo6654639.mockable.io/api/rest/";
 
-		// URL pour le login
-		loginUrl001 = "https://demo6654639.mockable.io/api/login/";
-		loginUrl002 = "/";
-		loginUrl003 = "/";
-		loginHttpMethod = "GET";
+			// URL pour le login
+			urlLogin = [ "https://demo6654639.mockable.io/api/login/", "/", "/" ];
+			loginHttpMethod = "GET";
 
-		// URL pour l'affichage d'un produit
-		urlGetProductDetails001 = urlBase;
-		urlGetProductDetails002 = "/products/";
-		urlGetProductDetails003 = "/details/";
-		httpMethodGetProduct = "GET";
+			// URL pour l'affichage d'un produit
+			urlGetProductDetails = [ urlBase, "/products/", "/details/" ];
+			httpMethodGetProduct = "GET";
 
-		// URL pour la recherche d'un produit
-		urlSearchProductByName001 = urlBase;
-		urlSearchProductByName002 = "/search/";
-		urlSearchProductByName003 = "/";
-		httpMethodSearchProduct = "GET";
+			// URL pour la recherche d'un produit
+			urlSearchProductByName = [ urlBase, "/search/", "/" ];
+			httpMethodSearchProduct = "GET";
 
-		// URL pour l'emprunt d'un produit
-		urlLoanProduct001 = urlBase;
-		urlLoanProduct002 = "/products/";
-		urlLoanProduct003 = "/loan/";
-		urlLoanProduct004 = "/";
-		urlLoanProduct005 = "/";
-		httpMethodLoanProduct = "PUT";
+			// URL pour l'emprunt d'un produit
+			urlLoanProduct = [ urlBase, "/products/", "/loan/", "/", "/" ];
+			httpMethodLoanProduct = "PUT";
 
-		// URL pour le retour d'un produit
-		urlReturnProduct001 = urlBase;
-		urlReturnProduct002 = "/products/";
-		urlReturnProduct003 = "/return/";
-		httpMethodReturnProduct = "PUT";
+			// URL pour le retour d'un produit
+			urlReturnProduct = [ urlBase, "/products/", "/return/" ];
+			httpMethodReturnProduct = "PUT";
+			break;
+		}
 	}
 }
 
@@ -199,7 +168,7 @@ function login(username, password) {
 Construction de l'URL de login.
 */
 function makeUrlLogin(username, password) {
-	return loginUrl001 + username + loginUrl002 + password + loginUrl003;
+	return urlLogin[0] + username + urlLogin[1] + password + urlLogin[2];
 }
 
 
@@ -266,7 +235,7 @@ function getProductDetails(productId) {
 Construction de l'URL pour l'affichage d'un produit.
 */
 function makeUrlGetProductDetails(productId) {
-	return urlGetProductDetails001 + theToken + urlGetProductDetails002 + productId + urlGetProductDetails003;
+	return urlGetProductDetails[0] + theToken + urlGetProductDetails[1] + productId + urlGetProductDetails[2];
 }
 
 
@@ -345,7 +314,7 @@ function searchProductByName(term) {
 Construction de l'URL pour la recherche d'un produit.
 */
 function makeUrlSearchProductByName(term) {
-	return urlSearchProductByName001 + theToken + urlSearchProductByName002 + term + urlSearchProductByName003;
+	return urlSearchProductByName[0] + theToken + urlSearchProductByName[1] + term + urlSearchProductByName[2];
 }
 
 
@@ -461,8 +430,8 @@ function loanProduct(productId, beginDate, endDate) {
 Construction de l'URL pour l'emprunt d'un produit.
 */
 function makeUrlLoanProduct(productId, beginDate, endDate) {
-	return urlLoanProduct001 + theToken + urlLoanProduct002 + productId
-			+ urlLoanProduct003 + beginDate + urlLoanProduct004 + endDate + urlLoanProduct005;
+	return urlLoanProduct[0] + theToken + urlLoanProduct[1] + productId
+			+ urlLoanProduct[2] + beginDate + urlLoanProduct[3] + endDate + urlLoanProduct[4];
 }
 
 
@@ -511,7 +480,7 @@ function returnProduct(productId) {
 Construction de l'URL pour le retour d'un produit.
 */
 function makeUrlReturnProduct(productId) {
-	return urlReturnProduct001 + theToken + urlReturnProduct002 + productId + urlReturnProduct003;
+	return urlReturnProduct[0] + theToken + urlReturnProduct[1] + productId + urlReturnProduct[2];
 }
 
 
