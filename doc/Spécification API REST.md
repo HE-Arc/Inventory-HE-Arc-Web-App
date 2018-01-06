@@ -38,7 +38,7 @@
         "name": "<Product name>",
         "description": "<Product description>",
         "is_loan": true/false,
-        "location": {
+        "loan": {
           "begin_date": "yyyy.mm.dd",
           "end_date": "yyyy.mm.dd"
         }
@@ -89,6 +89,28 @@
 #### Paramètres
 * `<token>` : Token d'authentification de la session
 * `<term>` : Terme(s) recherché(s)
+
+### Réponse JSON
+    {
+      "success": true,
+      "number_results": 3,
+      "results": [
+        {…},
+        {…},
+        {…}
+      ]
+    }
+
+## Récupérer tous les emprunts de l'utilisateur
+### Méthode HTTP
+`GET`
+
+### URL
+    https://inventory-dev.ing.he-arc.ch/api/rest/<token>/<user>/loans/
+
+#### Paramètres
+* `<token>` : Token d'authentification de la session
+* `<user>` : Nom de l'utilisateur
 
 ### Réponse JSON
     {
