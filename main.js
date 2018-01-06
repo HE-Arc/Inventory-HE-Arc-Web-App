@@ -16,6 +16,7 @@ Variables globales.
 var theToken;
 var productId;
 var resultProductsId = [];
+var webCodeCamJSdecoder;
 
 // Définition des variables pour la construction des URL
 var urlLogin;
@@ -53,26 +54,28 @@ Construction des URL de l'API.
 function buildUrls() {
 	switch (chosenApi) {
 		case currentProdApi: {
-			const urlBase = "https://inventory.ing.he-arc.ch/api/rest/";
+			const urlDomain = "https://inventory.ing.he-arc.ch/";
+			const urlBaseLogin = "api/login/";
+			const urlBase = "api/rest/";
 
 			// URL pour le login
-			urlLogin = [ "https://inventory.ing.he-arc.ch/api/login/", "/", "" ];
+			urlLogin = [ urlDomain + urlBaseLogin, "/", "" ];
 			loginHttpMethod = "GET";
 
 			// URL pour l'affichage d'un produit
-			urlGetProductDetails = [ urlBase, "/Product/info?productId=", "" ];
+			urlGetProductDetails = [ urlDomain + urlBase, "/Product/info?productId=", "" ];
 			httpMethodGetProduct = "GET";
 
 			// URL pour la recherche d'un produit
-			urlSearchProductByName = [ urlBase, "/Product/search?term=", "" ];
+			urlSearchProductByName = [ urlDomain + urlBase, "/Product/search?term=", "" ];
 			httpMethodSearchProduct = "GET";
 
 			// URL pour l'emprunt d'un produit
-			urlLoanProduct = [ urlBase, "/Product/loan?productId=", "&beginDate=", "&endDate=", "" ];
+			urlLoanProduct = [ urlDomain + urlBase, "/Product/loan?productId=", "&beginDate=", "&endDate=", "" ];
 			httpMethodLoanProduct = "GET";
 
 			// URL pour le retour d'un produit
-			urlReturnProduct = [ urlBase, "/Product/returnProduct?productId=", "" ];
+			urlReturnProduct = [ urlDomain + urlBase, "/Product/returnProduct?productId=", "" ];
 			httpMethodReturnProduct = "GET";
 			break;
 		}
@@ -81,26 +84,28 @@ function buildUrls() {
 					"Username: devweb.user or devweb.manager or devweb.admin\n" +
 					"Password: 123456");
 
-			const urlBase = "https://inventory-dev.ing.he-arc.ch/api/rest/";
+			const urlDomain = "https://inventory-dev.ing.he-arc.ch/";
+			const urlBaseLogin = "api/login/";
+			const urlBase = "api/rest/";
 
 			// URL pour le login
-			urlLogin = [ "https://inventory-dev.ing.he-arc.ch/api/login/", "/", "" ];
+			urlLogin = [ urlDomain + urlBaseLogin, "/", "" ];
 			loginHttpMethod = "GET";
 
 			// URL pour l'affichage d'un produit
-			urlGetProductDetails = [ urlBase, "/Product/info?productId=", "" ];
+			urlGetProductDetails = [ urlDomain + urlBase, "/Product/info?productId=", "" ];
 			httpMethodGetProduct = "GET";
 
 			// URL pour la recherche d'un produit
-			urlSearchProductByName = [ urlBase, "/Product/search?term=", "" ];
+			urlSearchProductByName = [ urlDomain + urlBase, "/Product/search?term=", "" ];
 			httpMethodSearchProduct = "GET";
 
 			// URL pour l'emprunt d'un produit
-			urlLoanProduct = [ urlBase, "/Product/loan?productId=", "&beginDate=", "&endDate=", "" ];
+			urlLoanProduct = [ urlDomain + urlBase, "/Product/loan?productId=", "&beginDate=", "&endDate=", "" ];
 			httpMethodLoanProduct = "GET";
 
 			// URL pour le retour d'un produit
-			urlReturnProduct = [ urlBase, "/Product/returnProduct?productId=", "" ];
+			urlReturnProduct = [ urlDomain + urlBase, "/Product/returnProduct?productId=", "" ];
 			httpMethodReturnProduct = "GET";
 			break;
 		}
@@ -109,26 +114,28 @@ function buildUrls() {
 					"Username: devweb.user\n" +
 					"Password: 123456");
 
-			const urlBase = "https://demo6654639.mockable.io/api/rest/";
+			const urlDomain = "https://demo6654639.mockable.io/";
+			const urlBaseLogin = "api/login/";
+			const urlBase = "api/rest/";
 
 			// URL pour le login
-			urlLogin = [ "https://demo6654639.mockable.io/api/login/", "/", "/" ];
+			urlLogin = [ urlDomain + urlBaseLogin, "/", "/" ];
 			loginHttpMethod = "GET";
 
 			// URL pour l'affichage d'un produit
-			urlGetProductDetails = [ urlBase, "/products/", "/details/" ];
+			urlGetProductDetails = [ urlDomain + urlBase, "/products/", "/details/" ];
 			httpMethodGetProduct = "GET";
 
 			// URL pour la recherche d'un produit
-			urlSearchProductByName = [ urlBase, "/search/", "/" ];
+			urlSearchProductByName = [ urlDomain + urlBase, "/search/", "/" ];
 			httpMethodSearchProduct = "GET";
 
 			// URL pour l'emprunt d'un produit
-			urlLoanProduct = [ urlBase, "/products/", "/loan/", "/", "/" ];
+			urlLoanProduct = [ urlDomain + urlBase, "/products/", "/loan/", "/", "/" ];
 			httpMethodLoanProduct = "PUT";
 
 			// URL pour le retour d'un produit
-			urlReturnProduct = [ urlBase, "/products/", "/return/" ];
+			urlReturnProduct = [ urlDomain + urlBase, "/products/", "/return/" ];
 			httpMethodReturnProduct = "PUT";
 			break;
 		}
@@ -336,24 +343,28 @@ function processSearchProductByName(response) {
 			responseSection.innerHTML += "<ul id=\"searchProductByName_list\"></ul>";
 			var resultsListSection = document.getElementById('searchProductByName_list');
 			for (i = 0; i < response.result.total; ++i) {
-				var resultId = "searchProductByName_result" + i;
+				if (response.result.datas[i] != false) {
+					var resultId = "searchProductByName_result" + i;
 
-				resultsListSection.innerHTML +=
-						"<li>" + "<a " + "id=\"" + resultId + "\"" + " href=\"" + "#" + "\">"
-						+ response.result.datas[i].id
-						+ ": "
-						+ response.result.datas[i].name
-						+ "</a>" + "</li>";
+					resultsListSection.innerHTML +=
+							"<li>" + "<a " + "id=\"" + resultId + "\"" + " href=\"" + "#" + "\">"
+							+ response.result.datas[i].id
+							+ ": "
+							+ response.result.datas[i].name
+							+ "</a>" + "</li>";
+				}
 			}
 
 			for (i = 0; i < response.result.total; ++i) {
-				resultProductsId[i] = response.result.datas[i].id;
+				if (response.result.datas[i] != false) {
+					resultProductsId[i] = response.result.datas[i].id;
 
-				var resultId = "searchProductByName_result" + i;
-				document.getElementById(resultId).onclick = function(mouseEvent) {
-					// Recherche du produit sélectionné
-					productId = resultProductsId[mouseEvent.srcElement.id["searchProductByName_result".length]];
-					getProductDetails(productId);
+					var resultId = "searchProductByName_result" + i;
+					document.getElementById(resultId).onclick = function(mouseEvent) {
+						// Recherche du produit sélectionné
+						productId = resultProductsId[mouseEvent.srcElement.id["searchProductByName_result".length]];
+						getProductDetails(productId);
+					}
 				}
 			}
 		}
@@ -546,6 +557,9 @@ Affichage de la section de login.
 */
 function showLogin() {
 	document.getElementById('signIn').style.display = 'block';
+
+	// Autofocus sur le champ Product ID
+	document.getElementById('login_username').focus();
 }
 
 
@@ -564,6 +578,9 @@ function showShowAndSearchProduct() {
 	document.getElementById('showProduct').style.display = 'block';
 	document.getElementById('scanWebCodeCamJS').style.display = 'block';
 	document.getElementById('searchProductByName').style.display = 'block';
+
+	// Autofocus sur le champ Product ID
+	document.getElementById('showProductDetails_productId').focus();
 }
 
 
@@ -583,6 +600,9 @@ Affichage des sections Loan et Return.
 function showLoanAndReturn() {
 	document.getElementById('loanProduct').style.display = 'block';
 	document.getElementById('returnProduct').style.display = 'block';
+
+	// Autofocus sur le champ Product ID
+	document.getElementById('beginDate_productId').focus();
 }
 
 
@@ -605,10 +625,10 @@ function printError(elementId, response) {
 
 
 /*
-Scanner WebCodeCanJS
+Scanner WebCodeCamJS
 Démarrage du scan de codes-barres et codes QR.
 */
-function scanWebCodeCamJS() {
+function initWebCodeCamJS() {
 	var txt = "innerText" in HTMLElement.prototype ? "innerText" : "textContent";
 	var arg = {
 		resultFunction: function(result) {
@@ -620,11 +640,51 @@ function scanWebCodeCamJS() {
 			getProductDetails(productId);
 		}
 	};
-	var decoder = new WebCodeCamJS("canvas").buildSelectMenu('select', 'environment|back').init(arg).play();
-	/*  Without visible select menu
-			var decoder = new WebCodeCamJS("canvas").buildSelectMenu(document.createElement('select'), 'environment|back').init(arg).play();
-	*/
+	webCodeCamJSdecoder = new WebCodeCamJS("canvas");
+	webCodeCamJSdecoder.buildSelectMenu('select.scanWebCodeCamJS', 'environment|back');
+	//webCodeCamJSdecoder.options.width = 625;
+	//webCodeCamJSdecoder.options.height = 576;
+	webCodeCamJSdecoder.init(arg);
+
+	// Activation du bouton pour démarrer le scanner
+	setButtonToStartScanWebCodeCamJS();
+
+	// Redémarrage du scanner en cas de changement de caméra
 	document.querySelector('select').addEventListener('change', function() {
-		decoder.stop().play();
+		webCodeCamJSdecoder.stop().play();
 	});
+}
+
+/*
+Scanner WebCodeCamJS
+Démarrage du scanner.
+*/
+function startScanWebCodeCamJS() {
+	webCodeCamJSdecoder.play();
+	setButtonToStopScanWebCodeCamJS();
+}
+
+/*
+Mise à jour du bouton pour démarrer le scanner.
+*/
+function setButtonToStartScanWebCodeCamJS() {
+	document.getElementById('buttonScanWebCodeCamJS').textContent = "Start scan WebCodeCamJS";
+	document.getElementById('buttonScanWebCodeCamJS').onclick = startScanWebCodeCamJS;
+}
+
+/*
+Scanner WebCodeCamJS
+Arrêt du scanner.
+*/
+function stopScanWebCodeCamJS() {
+	webCodeCamJSdecoder.stop();
+	setButtonToStartScanWebCodeCamJS();
+}
+
+/*
+Mise à jour du bouton pour arrêter le scanner.
+*/
+function setButtonToStopScanWebCodeCamJS() {
+	document.getElementById('buttonScanWebCodeCamJS').textContent = "Stop scan WebCodeCamJS";
+	document.getElementById('buttonScanWebCodeCamJS').onclick = stopScanWebCodeCamJS;
 }
