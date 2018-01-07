@@ -54,9 +54,9 @@ Construction des URL de l'API.
 function buildUrls() {
 	switch (chosenApi) {
 		case currentProdApi: {
-			const urlDomain = "https://inventory.ing.he-arc.ch/";
-			const urlBaseLogin = "api/login/";
-			const urlBase = "api/rest/";
+			const urlDomain = "https://inventory.ing.he-arc.ch";
+			const urlBaseLogin = "/api/login/";
+			const urlBase = "/api/rest/";
 
 			// URL pour le login
 			urlLogin = [ urlDomain + urlBaseLogin, "/", "" ];
@@ -84,9 +84,9 @@ function buildUrls() {
 					"Username: devweb.user or devweb.manager or devweb.admin\n" +
 					"Password: 123456");
 
-			const urlDomain = "https://inventory-dev.ing.he-arc.ch/";
-			const urlBaseLogin = "api/login/";
-			const urlBase = "api/rest/";
+			const urlDomain = "https://inventory-dev.ing.he-arc.ch";
+			const urlBaseLogin = "/api/login/";
+			const urlBase = "/api/rest/";
 
 			// URL pour le login
 			urlLogin = [ urlDomain + urlBaseLogin, "/", "" ];
@@ -114,9 +114,9 @@ function buildUrls() {
 					"Username: devweb.user\n" +
 					"Password: 123456");
 
-			const urlDomain = "https://demo6654639.mockable.io/";
-			const urlBaseLogin = "api/login/";
-			const urlBase = "api/rest/";
+			const urlDomain = "https://demo6654639.mockable.io";
+			const urlBaseLogin = "/api/login/";
+			const urlBase = "/api/rest/";
 
 			// URL pour le login
 			urlLogin = [ urlDomain + urlBaseLogin, "/", "/" ];
@@ -337,16 +337,15 @@ function processSearchProductByName(response) {
 
 			// Affichage des résultats
 			var responseSection = document.getElementById('searchProductByName_response');
-			responseSection.innerHTML = "Nombre de résultats : " + response.result.total;
-			responseSection.innerHTML += "</br>";
+			responseSection.innerHTML = "Nombre de résultats : " + response.result.total + "</br>"
+					+ "<ul id=\"searchProductByName_list\"></ul>";
 
-			responseSection.innerHTML += "<ul id=\"searchProductByName_list\"></ul>";
-			var resultsListSection = document.getElementById('searchProductByName_list');
+			var listResultsSection = "";
 			for (i = 0; i < response.result.total; ++i) {
 				if (response.result.datas[i] != false) {
 					var resultId = "searchProductByName_result" + i;
 
-					resultsListSection.innerHTML +=
+					listResultsSection +=
 							"<li>" + "<a " + "id=\"" + resultId + "\"" + " href=\"" + "#" + "\">"
 							+ response.result.datas[i].id
 							+ ": "
@@ -354,6 +353,7 @@ function processSearchProductByName(response) {
 							+ "</a>" + "</li>";
 				}
 			}
+			document.getElementById('searchProductByName_list').innerHTML = listResultsSection;
 
 			for (i = 0; i < response.result.total; ++i) {
 				if (response.result.datas[i] != false) {
@@ -374,21 +374,21 @@ function processSearchProductByName(response) {
 
 			// Affichage des résultats
 			var responseSection = document.getElementById('searchProductByName_response');
-			responseSection.innerHTML = "Nombre de résultats : " + response.number_results;
-			responseSection.innerHTML += "</br>";
+			responseSection.innerHTML = "Nombre de résultats : " + response.number_results + "</br>"
+			 		+ "<ul id=\"searchProductByName_list\"></ul>";
 
-			responseSection.innerHTML += "<ul id=\"searchProductByName_list\"></ul>";
-			var resultsListSection = document.getElementById('searchProductByName_list');
+			var listResultsSection = "";
 			for (i = 0; i < response.number_results; ++i) {
 				var resultId = "searchProductByName_result" + i;
 
-				resultsListSection.innerHTML +=
+				listResultsSection +=
 						"<li>" + "<a " + "id=\"" + resultId + "\"" + " href=\"" + "#" + "\">"
 						+ response.results[i].id
 						+ ": "
 						+ response.results[i].name
 						+ "</a>" + "</li>";
 			}
+			document.getElementById('searchProductByName_list').innerHTML = listResultsSection;
 
 			for (i = 0; i < response.number_results; ++i) {
 				resultProductsId[i] = response.results[i].id;
