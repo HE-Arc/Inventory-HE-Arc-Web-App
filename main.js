@@ -331,67 +331,48 @@ Fonction de callback.
 */
 function processSearchProductByName(response) {
 	if (isRequestSuccess(response)) {
+
+		var total;
+		var results;
+
+		// Adaptation selon l'API
 		if (chosenApi == currentProdApi || chosenApi == currentDevApi) {
-			console.log("Number of results: " + response.result.total);
-			console.log("Complete response:\n" + JSON.stringify(response));
-
-			// Affichage des résultats
-			var responseSection = document.getElementById('searchProductByName_response');
-			responseSection.innerHTML = "Nombre de résultats : " + response.result.total + "</br>"
-					+ "<ul id=\"searchProductByName_list\"></ul>";
-
-			var listResultsSection = "";
-			for (i = 0; i < response.result.total; ++i) {
-				if (response.result.datas[i] != false) {
-					var resultId = "searchProductByName_result" + i;
-
-					listResultsSection +=
-							"<li>" + "<a " + "id=\"" + resultId + "\"" + " href=\"" + "#" + "\">"
-							+ response.result.datas[i].id
-							+ ": "
-							+ response.result.datas[i].name
-							+ "</a>" + "</li>";
-				}
-			}
-			document.getElementById('searchProductByName_list').innerHTML = listResultsSection;
-
-			for (i = 0; i < response.result.total; ++i) {
-				if (response.result.datas[i] != false) {
-					resultProductsId[i] = response.result.datas[i].id;
-
-					var resultId = "searchProductByName_result" + i;
-					document.getElementById(resultId).onclick = function(mouseEvent) {
-						// Recherche du produit sélectionné
-						productId = resultProductsId[mouseEvent.srcElement.id["searchProductByName_result".length]];
-						getProductDetails(productId);
-					}
-				}
-			}
+			totalResults = response.result.total;
+			results = response.result.datas;
 		}
 		else if (chosenApi == newApi) {
-			console.log("Number of results: " + response.number_results);
-			console.log("Complete response:\n" + JSON.stringify(response));
+			totalResults = response.number_results;
+			results = response.results;
+		}
 
-			// Affichage des résultats
-			var responseSection = document.getElementById('searchProductByName_response');
-			responseSection.innerHTML = "Nombre de résultats : " + response.number_results + "</br>"
-			 		+ "<ul id=\"searchProductByName_list\"></ul>";
+		console.log("Number of results: " + totalResults);
+		console.log("Complete response:\n" + JSON.stringify(response));
 
-			var listResultsSection = "";
-			for (i = 0; i < response.number_results; ++i) {
+		// Affichage du nombre de résultats
+		var responseSection = document.getElementById('searchProductByName_response');
+		responseSection.innerHTML = "Nombre de résultats : " + totalResults + "</br>"
+		 		+ "<ul id=\"searchProductByName_list\"></ul>";
+
+		// Affichage de la liste des résultats
+		var resultsListSection = "";
+		for (i = 0; i < totalResults; ++i) {
+			if (!(chosenApi == currentProdApi || chosenApi == currentDevApi) || results[i] != false) {
 				var resultId = "searchProductByName_result" + i;
 
-				listResultsSection +=
+				resultsListSection +=
 						"<li>" + "<a " + "id=\"" + resultId + "\"" + " href=\"" + "#" + "\">"
-						+ response.results[i].id
+						+ results[i].id
 						+ ": "
-						+ response.results[i].name
+						+ results[i].name
 						+ "</a>" + "</li>";
 			}
-			document.getElementById('searchProductByName_list').innerHTML = listResultsSection;
+		}
+		document.getElementById('searchProductByName_list').innerHTML = resultsListSection;
 
-			for (i = 0; i < response.number_results; ++i) {
-				resultProductsId[i] = response.results[i].id;
+		// Ajout d'un lien sur chaque résultat
+		for (i = 0; i < totalResults; ++i) {
+			if (!(chosenApi == currentProdApi || chosenApi == currentDevApi) || results[i] != false) {
+				resultProductsId[i] = results[i].id;
 
 				var resultId = "searchProductByName_result" + i;
 				document.getElementById(resultId).onclick = function(mouseEvent) {
@@ -401,6 +382,7 @@ function processSearchProductByName(response) {
 				}
 			}
 		}
+
 	}
 	else {
 		// Affichage de l'erreur
