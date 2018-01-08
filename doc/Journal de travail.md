@@ -8,10 +8,10 @@
 
 
 ## Dimanche 7 janvier 2018
-* Changer les `elem.innerHTML += str` par :
+Changer les `elem.innerHTML += str` par :
 
     newElement.innerHTML = str;
-    elem.appendChild(newElement);​
+    elem.appendChild(newElement);
 
 * Débug et amélioration de la gestion de la caméra.
 * Refactoring du code.
