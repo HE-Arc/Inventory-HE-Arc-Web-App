@@ -1,6 +1,95 @@
 # Journal de travail
 
 
+## Lundi 8 janvier 2018
+* Rédaction du rapport.
+
+6 heures
+
+
+## Dimanche 7 janvier 2018
+* Changer les `elem.innerHTML += str` par :
+
+    newElement.innerHTML = str;
+    elem.appendChild(newElement);​
+
+* Débug et amélioration de la gestion de la caméra.
+* Refactoring du code.
+* Rédaction du rapport.
+
+5 heures
+
+
+## Samedi 6 janvier 2018
+* Débug de la caméra.
+
+3 heures
+
+
+## Vendredi 5 janvier 2018
+* Ajout de l'autofocus sur les champs "Product ID" et "Begin date" lors de l'affichage des sections correspondantes.
+* Débug de la caméra.
+
+2 heures
+
+
+## Jeudi 4 janvier 2018
+* Recherche d'infos sur les techniques de hashage du mot de passe côté client.
+  * [Transmettre un simple hash du mdp à la place du mdp en clair ne résout pas le problème de la sécurité](https://stackoverflow.com/a/4121657/6113711).
+  * [La solution conventionnelle est de passer par du HTTPS](https://www.sslshopper.com/article-how-to-make-a-secure-login-form-with-ssl.html) (ce qui est déjà le cas).
+* Pré-remplissage automatique des champs de date pour l'emprunt de matériel :
+  * Date de début : pré-remplis avec la date actuelle.
+  * Date de fin : pré-remplie avec la date actuelle + 1 mois.
+
+### Calcul des heures passées sur le projet
+* Nombre d'heures allouées au PA : 180 heures.
+* Nombre d'heures effectuées jusqu'au mercredi 3 janvier 2017 compris : 141 heures.
+* Nombre d'heures restantes : 39 heures.
+
+4 heures
+
+
+## Mercredi 3 janvier 2018
+* Recherche pour l'activation de la mise en cache des fichiers de ressources.
+
+2 heures
+
+
+## Vendredi 22 décembre 2017
+* Filtrage des résultats de la recherche par mots-clés pour supprimer les produits "_false_".
+* Ajouter la date actuelle et la date actuelle + 1 mois comme valeurs par défaut dans les champs date pour l'emprunt.
+  * Bug encore.
+
+3 heures
+
+
+## Jeudi 21 décembre 2017
+* Refactoring du code de construction des URL des API.
+
+1 heure
+
+
+## Mercredi 20 décembre 2017
+### Séance hebdomadaire
+* Ajouter un test dans les résultats de la recherche de produits par mots-clés pour supprimer les produits "_false_".
+* Ajouter la date actuelle et la date actuelle + 1 mois comme valeurs par défaut dans les champs date pour l'emprunt.
+
+### Pour la prochaine fois
+* Aspect PWA :
+  * Mise en cache des fichiers re ressource (HTML, JavaScript, etc.).
+    * Attention à fixer une date d'expiration des fichiers en cache pour d'éventuelles mise à jour futures !
+* Corriger le bug la caméra.
+* Le rapport.
+* Préparer la démo de la présentation.
+* Compter le nombre d'heures de retard sur le projet (180 heures au total) afin de les compenser sur les semaines restantes.
+
+### Travail sur le projet
+* Ajout de la récupération de tous les emprunts de l'utilisateur dans la spécification de l'API.
+* Rapport
+
+5 heures
+
+
 ## Mardi 19 décembre 2017
 * Correction de la gestion de l'API actuelle.
 
@@ -87,7 +176,6 @@
       * Non, c'est juste qu'on ne peut pas passer de paramètres à la fonction...
     * Problème : La fonction du `addEventListener` n'est pas appelée.
       * Ça fonctionne pourtant dans un fichier HTML tout simple...
-
 
 2 heures
 
@@ -424,10 +512,14 @@
 ### Travail sur le projet
 * Mockup de l'interface ?
 
-## Dimanche 9 octobre 2017
+1 heure
+
+
+## Dimanche 8 octobre 2017
 * Mise à jour du journal de travail.
 
 1 heure
+
 
 ## Vendredi 6 octobre 2017
 * Avancé le [tutoriel PWA](https://developers.google.com/web/fundamentals/codelabs/your-first-pwapp/) jusqu'à [_Making the requests_](https://developers.google.com/web/fundamentals/codelabs/your-first-pwapp/#making_the_requests) (non compris).
@@ -440,6 +532,7 @@
     * Utiliser une stratégie [cache-first-then-network](https://jakearchibald.com/2014/offline-cookbook/#cache-network-race).
 
 6 heures
+
 
 ## Lundi 2 octobre 2017
 ### Objectifs
@@ -462,10 +555,12 @@
 
 5 heures
 
+
 ## Dimanche 1er octobre
 * Commencé le planning du projet.
 
 1 heure
+
 
 ## Lundi 25 septembre 2017
 ### Objectifs
@@ -485,6 +580,7 @@
 
 3 heures
 
+
 ## Dimanche 24 septembre 2017
 * Rédaction du [cahier des charges](https://github.com/HE-Arc/Inventory-HE-Arc-Web-App/blob/master/doc/Cahier%20des%20charges.md).
 * Lecture des documents fournis.
@@ -494,6 +590,7 @@
 * Mise à jour du journal de travail.
 
 5 heures
+
 
 ## Mercredi 20 septembre 2017
 ### Séance hebdomadaire
