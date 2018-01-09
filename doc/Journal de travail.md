@@ -1,6 +1,16 @@
 # Journal de travail
 
 
+## Mardi 9 janvier 2018
+* [Recherche sur la mise en cache des fichiers JavaScript et CSS](https://developers.google.com/speed/docs/insights/LeverageBrowserCaching) :
+  * La mise en cache doit se faire du côté serveur et GitHub.io ne propose pas de paramétrer ça.
+  * Utiliser les Service Workers mais [ça ne remplace pas complètement la mise en cache via les entêtes HTTP](https://stackoverflow.com/questions/42466473/if-you-are-using-service-workers-do-you-still-need-cache-control-headers).
+* Implémentation d'un Service Worker pour la mise en cache des fichiers sources (HTML, JavaScript, CSS, etc.).
+* Ajout d'un fichier Manifest.JSON pour l'utilisation de la web app en standalone.
+
+6 heures
+
+
 ## Lundi 8 janvier 2018
 * Rédaction du rapport.
 
