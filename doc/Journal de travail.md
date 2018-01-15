@@ -1,12 +1,35 @@
 # Journal de travail
 
 
+## Lundi 15 janvier 2018
+* Rédaction du rapport.
+* Correction du fichier `manifest.json`.
+* Optimisation de l'application.
+
+7 heures
+
+
+## Jeudi 11 janvier 2018
+* Correction du fichier `manifest.json`.
+
+1 heure
+
+
+## Mercredi 10 janvier 2018
+### Séance hebdomadaire
+Priorité pour la fin du projet :
+* Rédaction du rapport.
+* Finaliser les scénarios pour la démo de la présentation.
+
+1 heure
+
+
 ## Mardi 9 janvier 2018
 * [Recherche sur la mise en cache des fichiers JavaScript et CSS](https://developers.google.com/speed/docs/insights/LeverageBrowserCaching) :
-  * La mise en cache doit se faire du côté serveur et GitHub.io ne propose pas de paramétrer ça.
+  * La mise en cache doit être réglée du côté serveur et GitHub.io ne propose pas de paramétrer ça.
   * Utiliser les Service Workers mais [ça ne remplace pas complètement la mise en cache via les entêtes HTTP](https://stackoverflow.com/questions/42466473/if-you-are-using-service-workers-do-you-still-need-cache-control-headers).
 * Implémentation d'un Service Worker pour la mise en cache des fichiers sources (HTML, JavaScript, CSS, etc.).
-* Ajout d'un fichier Manifest.JSON pour l'utilisation de la web app en standalone.
+* Ajout d'un fichier `manifest.json` pour l'utilisation de la web app en standalone.
 
 6 heures
 
@@ -88,14 +111,14 @@ Changer les `elem.innerHTML += str` par :
 * Aspect PWA :
   * Mise en cache des fichiers re ressource (HTML, JavaScript, etc.).
     * Attention à fixer une date d'expiration des fichiers en cache pour d'éventuelles mise à jour futures !
-* Corriger le bug la caméra.
-* Le rapport.
+* Corriger le bug de la caméra.
+* Rédaction du rapport.
 * Préparer la démo de la présentation.
 * Compter le nombre d'heures de retard sur le projet (180 heures au total) afin de les compenser sur les semaines restantes.
 
 ### Travail sur le projet
 * Ajout de la récupération de tous les emprunts de l'utilisateur dans la spécification de l'API.
-* Rapport
+* Rédaction du rapport.
 
 5 heures
 
