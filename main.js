@@ -557,7 +557,7 @@ function showLogin() {
 	document.getElementById('login_username').focus();
 
 	// Masquage du nom d'utilisateur
-	document.getElementById('logged_username').style.display = 'none';
+	document.getElementById('log_informations').style.display = 'none';
 }
 
 
@@ -569,7 +569,7 @@ function hideLogin() {
 
 	// Affichage du nom d'utilisateur
 	document.getElementById('logged_username').innerHTML = username;
-	document.getElementById('logged_username').style.display = 'block';
+	document.getElementById('log_informations').style.display = 'block';
 }
 
 
