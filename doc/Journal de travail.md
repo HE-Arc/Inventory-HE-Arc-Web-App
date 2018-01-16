@@ -1,6 +1,17 @@
 # Journal de travail
 
 
+## Mardi 16 janvier 2018
+* Rédaction du rapport.
+* Correction et optimisation de l'application.
+
+### Calcul des heures passées sur le projet
+* Nombre d'heures allouées au PA : 180 heures.
+* Nombre d'heures effectuées jusqu'au mercredi 16 janvier 2017 compris : 180.5 heures.
+
+5 heures
+
+
 ## Lundi 15 janvier 2018
 * Rédaction du rapport.
 * Correction du fichier `manifest.json`.
