@@ -43,9 +43,16 @@ self.addEventListener('activate', function(e) {
 
 self.addEventListener('fetch', function(e) {
   console.log('[Service Worker] Fetch', e.request.url);
-  // var dataUrl = 'https://inventory-dev.ing.he-arc.ch';
-  // var dataUrl2 = 'https://demo6654639.mockable.io';
-  // if (e.request.url.indexOf(dataUrl2) > -1) {
+
+  // var dataUrl1 = 'inventory.ing.he-arc.ch';
+  // var dataUrl2 = 'inventory-dev.ing.he-arc.ch';
+  // var dataUrl3 = 'mockable.io';
+
+  var shellUrl = 'armanddelessert.github.io';
+
+  // if (e.request.url.indexOf(dataUrl1) > -1
+  //     || e.request.url.indexOf(dataUrl2) > -1
+  //     || e.request.url.indexOf(dataUrl3) > -1) {
   //   console.log('[Service Worker] Response cached', e.request.url);
   //   /*
   //    * When the request URL contains dataUrl, the app is asking for fresh
@@ -62,7 +69,8 @@ self.addEventListener('fetch', function(e) {
   //       });
   //     })
   //   );
-  // } else {
+  // } else
+  if (e.request.url.indexOf(shellUrl) > -1) {
     /*
      * The app is asking for app shell files. In this scenario the app uses the
      * "Cache, falling back to the network" offline strategy:
@@ -73,5 +81,5 @@ self.addEventListener('fetch', function(e) {
         return response || fetch(e.request);
       })
     );
-  // }
+  }
 });
