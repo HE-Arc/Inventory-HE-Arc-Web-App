@@ -434,6 +434,7 @@ function loanProduct(productId, beginDate, endDate) {
 
 /*
 Construction de l'URL pour l'emprunt d'un produit.
+Les dates doivent être au format "aaaa-mm-jj".
 */
 function makeUrlLoanProduct(productId, beginDate, endDate) {
 	return urlLoanProduct[0] + theToken + urlLoanProduct[1] + productId
