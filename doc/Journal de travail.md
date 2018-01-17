@@ -1,6 +1,27 @@
 # Journal de travail
 
 
+## Mercredi 17 janvier 2018
+### Séance hebdomadaire
+* Questions sur le rapport :
+  * La page de garde est bonne, il n'y a pas d'experts à inscrire.
+  * Faire un chapitre sur les difficultés rencontrées.
+    * Noter également les problèmes techniques rencontrés et les solutions apportées.
+  * Faire un chapitre sur les bugs connus et solutions potentielles.
+  * Conserver le planning original en annexe, noter les écarts rencontrés (optionnel).
+* Mise au point concernant le rendu du projet :
+  * Professeur (M. David Grunenwald) : Remettre une version PDF du rapport.
+  * Responsable MRU (M. Didier Rizzotti) : Remettre une version papier du rapport.
+  * Ajouter le rapport au dépôt GitHub, indiquer les annexes.
+* Faire un fichier ReadMe donnant la marche à suivre pour déployer l'application et tester sur une autre machine.
+
+### Travail sur le projet
+* Rédaction du rapport.
+* Préparation de la démonstration pour la présentation.
+
+5 heures
+
+
 ## Mardi 16 janvier 2018
 * Rédaction du rapport.
 * Correction et optimisation de l'application.
