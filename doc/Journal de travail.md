@@ -1,6 +1,20 @@
 # Journal de travail
 
 
+## Vendredi 19 janvier 2018
+* Rédaction du rapport.
+* Préparation du rendu du projet.
+
+9.5 heures
+
+
+## Jeudi 18 janvier 2018
+* Rédaction du rapport.
+* Ajout d'un bouton pour se déconnecter dans l'application.
+
+6.5 heures
+
+
 ## Mercredi 17 janvier 2018
 ### Séance hebdomadaire
 * Questions sur le rapport :
