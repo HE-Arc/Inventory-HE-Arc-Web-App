@@ -8,5 +8,11 @@ Application web pour la gestion des emprunts et des retours de matériel de l'in
 * [Planning](https://github.com/HE-Arc/Inventory-HE-Arc-Web-App/blob/master/doc/Planning.png)
 
 ## Portail Inventaire HE-Arc Ingénierie
-* [Portail développement](https://inventory-dev.ing.he-arc.ch/)
 * [Portail publique](https://inventory.ing.he-arc.ch/)
+* [Portail de test et développement](https://inventory-dev.ing.he-arc.ch/)
+
+## Déploiement de l'application
+* Cloner le dépôt GitHub.
+* Lancer le fichier index.html pour lancer le site depuis le système de fichier (`file:///`).
+  * Le scan de codes via la caméra ne fonctionnera pas dans ce cas.
+* Démarrer un serveur web local pour exécuter le site depuis le serveur web local (`http://localhost`).
