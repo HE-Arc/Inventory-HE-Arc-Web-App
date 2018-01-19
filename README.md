@@ -16,3 +16,6 @@ Application web pour la gestion des emprunts et des retours de matériel de l'in
 * Lancer le fichier index.html pour lancer le site depuis le système de fichier (`file:///`).
   * Le scan de codes via la caméra ne fonctionnera pas dans ce cas.
 * Démarrer un serveur web local pour exécuter le site depuis le serveur web local (`http://localhost`).
+
+## Icône
+L'icône de l'application provient du site [Flaticon](https://www.flaticon.com/free-icon/package_126165).
