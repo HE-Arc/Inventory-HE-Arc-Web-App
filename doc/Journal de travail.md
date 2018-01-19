@@ -5,6 +5,10 @@
 * Rédaction du rapport.
 * Préparation du rendu du projet.
 
+### Calcul des heures passées sur le projet
+* Nombre d'heures allouées au PA : 180 heures.
+* Nombre d'heures effectuées jusqu'au vendredi 19 janvier 2018 compris : 202 heures.
+
 9.5 heures
 
 
@@ -42,7 +46,7 @@
 
 ### Calcul des heures passées sur le projet
 * Nombre d'heures allouées au PA : 180 heures.
-* Nombre d'heures effectuées jusqu'au mercredi 16 janvier 2017 compris : 180.5 heures.
+* Nombre d'heures effectuées jusqu'au mercredi 16 janvier 2018 compris : 181 heures.
 
 5 heures
 
@@ -122,7 +126,7 @@ Changer les `elem.innerHTML += str` par :
 
 ### Calcul des heures passées sur le projet
 * Nombre d'heures allouées au PA : 180 heures.
-* Nombre d'heures effectuées jusqu'au mercredi 3 janvier 2017 compris : 141 heures.
+* Nombre d'heures effectuées jusqu'au mercredi 3 janvier 2018 compris : 141 heures.
 * Nombre d'heures restantes : 39 heures.
 
 4 heures
